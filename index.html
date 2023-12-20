@@ -66,10 +66,14 @@
         }
 
         a {
-            color: black;
+            color: darkred;
             text-decoration: none;
         }
-        a:hover {
+        #aboutme a:hover {
+            color: darkred;
+            text-decoration: underline;
+        }
+        .icon {
             color: darkred;
         }
         b {
@@ -89,70 +93,76 @@
 </script>
 <body>
     <div id="primary-content">
-        <div style="text-align: center">
-            <div style="display: inline-block; vertical-align: middle; width: 100%">
+        <div style="text-align: center; display: block">
+            <div style="display: inline-block; width: 60%;">
                 <h1>Botos Csaba</h1>
                 <p style="text-align: center">
                     <a href="mailto:csbotos@robots.ox.ac.uk">
-                        <img src="mail.svg" alt="mail" width="30px">
+                        <img src="mail.svg" alt="mail" width="30px" class="icon">
                     </a>
                     <a href="https://github.com/botcs">
-                        <img src="github.svg" alt="github" width="30px">
+                        <img src="github.svg" alt="github" width="30px" class="icon">
                     </a>
                     <a href="https://www.linkedin.com/in/botos-csaba/">
-                        <img src="linkedin.svg" alt="linkedin" width="30px">
+                        <img src="linkedin.svg" alt="linkedin" width="30px" class="icon">
                     </a>
                     <a href="https://scholar.google.com/citations?user=n68BdMgAAAAJ&hl=en">
-                        <img src="google-scholar.png" alt="google-scholar" width="30px">
+                        <img src="google-scholar.png" alt="google-scholar" width="30px" class="icon">
                     </a>
                     <a href="https://twitter.com/csaba_botos">
-                        <img src="twitter.svg" alt="twitter" width="30px">
+                        <img src="twitter.svg" alt="twitter" width="30px" class="icon">
+                    </a>
+                    <a href="./csbotos_cv.pdf">
+                        <img src="cv.svg" alt="cv" width="30px" class="icon">
                     </a>
                 </p>
             </div>
-            <!-- <div style="display: inline-block; vertical-align: middle; width: 40%">
-                <img src="always-sunny-in-scotland.jpg" alt="always-sunny-in-scotland" height=200px>
-            </div> -->
+            <div style="float: right; width: 40%;">
+                <img src="profile.jpg" alt="Botos Csaba" height="200" style="border-radius: 50%;">
+            </div>
         </div>
-        <h2>About me</h2>
-        <p>
-            I am currently pursuing a DPhil in Engineering Science
-            at University of Oxford, supervised by 
-            <a href="https://eng.ox.ac.uk/people/philip-torr/">Prof. Philip Torr</a> and
-            <a href="https://eng.ox.ac.uk/people/adel-bibi/">Dr. Adel Bibi</a>.
-            Before enrolling at the University of Oxford, 
-            I obtained my BSc in Bionic Engineering at the
-            <a href="https://itk.ppke.hu/en">Pázmány Péter Catholic University</a> in Budapest, Hungary
-            by winning three thesis awards from the 
-            <a href="https://otdk.hu/">National Council of Student Research Societies</a>.
-        </p>
-        <p>
-            During my undergraduate studies, I interned at the
-            <a href="https://koki.hun-ren.hu/?lang=en">Institute of Experimental Medicine</a> 
-            under the supervision of 
-            <a href="https://koki.hun-ren.hu/researchgroups/cerebral-cortex-research/about-us">Dr. Gábor Nyiri</a>, 
-            at <a href="https://www.verizon.com/business/en-gb/resources/articles/smart-communities-solutions/">
-            Verizon Smart Communities</a> under the supervision of 
-            <a href="https://www.linkedin.com/in/andr%C3%A1s-horv%C3%A1th-35906a8b/?originalSubdomain=hu>">
-            Dr. András Horváth</a>.
-            During my DPhil, I have been a research intern at the
-            <a href="https://www.intel.com/content/www/us/en/research/overview.html">Intel Embodied AI Lab</a>
-            under the supervision of 
-            <a href="https://matthias.pw/">Matthias Müller</a>.
-        </p>
-        <p>
-            My research interests include machine learning at various scales:
-            continual learning on computationally constrained scenarios,
-            self-supervised pre-training on large scale data
-            and efficient semi-supervised fine tuning.
+        <div id="aboutme">
+            <h2>About me</h2>
+            <p>
+                I am currently pursuing a DPhil in 
+                <a href="https://torrvision.com/">Engineering Science at University of Oxford</a>
+                , supervised by 
+                <a href="https://eng.ox.ac.uk/people/philip-torr/">Prof. Philip Torr</a> and
+                <a href="https://eng.ox.ac.uk/people/adel-bibi/">Dr. Adel Bibi</a>.
+                Before enrolling at the University of Oxford, 
+                I obtained my BSc in Bionic Engineering at the
+                <a href="https://itk.ppke.hu/en">Pázmány Péter Catholic University</a> in Budapest, Hungary
+                by winning three thesis awards from the 
+                <a href="https://otdk.hu/">National Council of Student Research Societies</a>.
+            </p>
+            <p>
+                During my undergraduate studies, I interned at the
+                <a href="https://koki.hun-ren.hu/?lang=en">Institute of Experimental Medicine</a> 
+                under the supervision of 
+                <a href="https://koki.hun-ren.hu/researchgroups/cerebral-cortex-research/about-us">Dr. Gábor Nyiri</a>, 
+                at <a href="https://www.verizon.com/business/en-gb/resources/articles/smart-communities-solutions/">
+                Verizon Smart Communities</a> under the supervision of 
+                <a href="https://www.linkedin.com/in/andr%C3%A1s-horv%C3%A1th-35906a8b/?originalSubdomain=hu>">
+                Dr. András Horváth</a>.
+                During my DPhil, I have been a research intern at the
+                <a href="https://www.intel.com/content/www/us/en/research/overview.html">Intel Embodied AI Lab</a>
+                under the supervision of 
+                <a href="https://matthias.pw/">Matthias Müller</a>.
+            </p>
+            <p>
+                My research interests include machine learning at various scales:
+                continual learning on computationally constrained scenarios,
+                self-supervised pre-training on large scale data
+                and efficient semi-supervised fine tuning.
 
-            I am really passionate about communicating ML research to a wide audience,
-            so I have been organizing and hosting machine learning seminars and reading groups,
-            gave talks and I have been a mentor at various summer schools.
-            <!-- I am also interested in the intersection of machine learning and neuroscience,
-            especially in the context of data-driven approaches towards explaining
-            the common learning mechanisms of the mammalian, avian and cephalopod brains. -->
-        </p>
+                I am really passionate about communicating ML research to a wide audience,
+                so I have been organizing and hosting machine learning seminars and reading groups,
+                gave talks and I have been a mentor at various summer schools.
+                <!-- I am also interested in the intersection of machine learning and neuroscience,
+                especially in the context of data-driven approaches towards explaining
+                the common learning mechanisms of the mammalian, avian and cephalopod brains. -->
+            </p>
+        </div>
         <h2>Collaboration</h2>
         <p>
             I am always open to new collaborations and internships, 
