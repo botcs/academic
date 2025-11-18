@@ -2,95 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Botos Csaba - Academic Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']] }});
     </script>
-    <!-- <script type="text/javascript" async
-        src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script> -->
     <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
     </script>
 
     <style>
-        #viz {
-            border: 2px solid black;
-        }
-        #primary-content {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        #primary-content h1 {
-            text-align: center;
-        }
+        #viz { border: 2px solid black; }
+        #primary-content { max-width: 800px; margin-left: auto; margin-right: auto; }
+        #primary-content h1 { text-align: center; }
         .project-card {
-            border-radius: 15px; /* Adjust this value for more or less rounded corners */
-            margin: 1em 0; /* Typical vertical margin for a paragraph */
-            padding: 1em; /* Optional, for some internal spacing */
-            display: block; /* Divs are block elements by default, like paragraphs */
+            border-radius: 15px;
+            margin: 1em 0;
+            padding: 1em;
+            display: block;
             border: 2px dashed lightgray;
             color: black;
+            background: white;
         }
-        /* .project-card img { */
-            /* height: 200px;
-            width: auto; */
-            /* margin: 0 auto; */
-        /* } */
-        .project-card:hover {
-            border: 2px solid orange;
-        }
+        .project-card:hover { border: 2px solid orange; }
         body {
             font-family: 'EB Garamond', serif;
             font-size: 22px;
             text-align: justify;
         }
+        section { margin: 0 auto; max-width: 1000px; padding-top: 20px; text-align: justify; }
+        svg { border: 2px solid gray; }
+        a { color: darkred; text-decoration: none; }
+        #aboutme a:hover { color: darkred; text-decoration: underline; }
+        .icon { color: darkred; }
+        b { font-weight: 10000; color: darkred; }
 
-        section {
-            margin: 0 auto;
-            max-width: 1000px;
-            padding-top: 20px;
-            text-align: justify;
+        /* --- AI Retreat spinner --- */
+        .ai-retreat-spinner {
+            display: inline-block;
+            transform-style: preserve-3d;
+            transition: transform 120ms linear;
+            will-change: transform;
         }
-
-        svg {
-            border: 2px solid gray;
-        }
-
-        a {
-            color: darkred;
-            text-decoration: none;
-        }
-        #aboutme a:hover {
-            color: darkred;
-            text-decoration: underline;
-        }
-        .icon {
-            color: darkred;
-        }
-        b {
-            font-weight: 10000;
-            color: darkred;
-        }
+        #primary-content { perspective: 1200px; }
     </style>
 </head>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TCWJ0JB5KY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-TCWJ0JB5KY');
 </script>
+
 <body>
     <div id="primary-content">
         <div style="text-align: center; display: block">
@@ -98,38 +70,37 @@
                 <h1>Botos Csaba</h1>
                 <p style="text-align: center">
                     <a href="mailto:csbotos@robots.ox.ac.uk">
-                        <img src="mail.svg" alt="mail" width="30px" class="icon">
+                        <img src="mail.svg" alt="mail" width="30px" class="icon" />
                     </a>
                     <a href="https://github.com/botcs">
-                        <img src="github.svg" alt="github" width="30px" class="icon">
+                        <img src="github.svg" alt="github" width="30px" class="icon" />
                     </a>
                     <a href="https://www.linkedin.com/in/botos-csaba/">
-                        <img src="linkedin.svg" alt="linkedin" width="30px" class="icon">
+                        <img src="linkedin.svg" alt="linkedin" width="30px" class="icon" />
                     </a>
                     <a href="https://scholar.google.com/citations?user=n68BdMgAAAAJ&hl=en">
-                        <img src="google-scholar.png" alt="google-scholar" width="30px" class="icon">
+                        <img src="google-scholar.png" alt="google-scholar" width="30px" class="icon" />
                     </a>
                     <a href="https://twitter.com/csaba_botos">
-                        <img src="twitter.svg" alt="twitter" width="30px" class="icon">
+                        <img src="twitter.svg" alt="twitter" width="30px" class="icon" />
                     </a>
                     <a href="./csbotos_cv.pdf">
-                        <img src="cv.svg" alt="cv" width="30px" class="icon">
+                        <img src="cv.svg" alt="cv" width="30px" class="icon" />
                     </a>
                 </p>
             </div>
             <div style="float: right; width: 40%;">
-                <img
-                src="profile.jpg"
-                alt="Botos Csaba; DPhil in Machine Learning at Univesity of Oxford"
-                height="200" style="border-radius: 3%;">
+                <img src="profile.jpg" alt="Botos Csaba; DPhil in Machine Learning at Univesity of Oxford"
+                    height="200" style="border-radius: 3%;" />
             </div>
         </div>
+
         <div id="aboutme">
             <h2>About me</h2>
             <p>
                 I have successfully defended my DPhil thesis in
-                <a href="https://torrvision.com/">Engineering Science at University of Oxford</a>
-                , supervised by
+                <a href="https://torrvision.com/">Engineering Science at University of Oxford</a>,
+                supervised by
                 <a href="https://eng.ox.ac.uk/people/philip-torr/">Prof. Philip Torr</a> and
                 <a href="https://eng.ox.ac.uk/people/adel-bibi/">Dr. Adel Bibi</a> and examined by
                 <a href="https://www.inference.vc/about/">Prof. Ferenc Huszár</a> and
@@ -137,11 +108,6 @@
                 My research focused on the intersection of machine learning and computer vision,
                 with a special emphasis on domain adaptation, continual learning and self-supervised learning
                 in computationally constrained environments.
-                Before enrolling at the University of Oxford,
-                I obtained my BSc in Bionic Engineering at the
-                <a href="https://itk.ppke.hu/en">Pázmány Péter Catholic University</a> in Budapest, Hungary
-                by winning three thesis awards from the
-                <a href="https://otdk.hu/">National Council of Student Research Societies</a>.
             </p>
             <p>
                 During my undergraduate studies, I interned at the
@@ -150,137 +116,199 @@
                 <a href="https://koki.hun-ren.hu/researchgroups/cerebral-cortex-research/about-us">Dr. Gábor Nyiri</a>,
                 at <a href="https://www.verizon.com/business/en-gb/resources/articles/smart-communities-solutions/">
                 Verizon Smart Communities</a> under the supervision of
-                <a href="https://www.linkedin.com/in/andr%C3%A1s-horv%C3%A1th-35906a8b/?originalSubdomain=hu>">
-                Dr. András Horváth</a>.
-                During my DPhil, I have been a research intern at the
-                <a href="https://www.intel.com/content/www/us/en/research/overview.html">Intel Embodied AI Lab</a>
-                under the supervision of
-                <a href="https://matthias.pw/">Matthias Müller</a>.
+                <a href="https://www.linkedin.com/in/andr%C3%A1s-horv%C3%A1th-35906a8b/?originalSubdomain=hu">Dr. András Horváth</a>.
+                During my DPhil, I was a research intern at the
+                <a href="https://www.intel.com/content/www/us/en/research/overview.html">Intel Embodied AI Lab</a>.
             </p>
             <p>
                 <b>[DEMO]</b>
-                I am really passionate about communicating ML research to a wide audience
-                and to that end I have found it incredibly helpful to make my own TensorFlow.js visualizations:
+                I am passionate about communicating ML research to a wide audience and I have made TensorFlow.js visualizations:
                 <a href="https://botcs.github.io/dopanet/">Domain Partitioning via Adversarial Training</a>,
                 <a href="https://botcs.github.io/label-delay/demo">Real-Time Online Continual Learning</a>,
                 <a href="https://botcs.github.io/embedding/">Interactive Contrastive Learning</a>.
-                Furthermore, I have been organizing and hosting machine learning seminars with the
-                <a href="https://users.ox.ac.uk/~ndog0178/XML/xml_index.html">Cross Disciplinary Machine Learning Research Cluster</a>
-                and the <a href="https://girlswhoml.com/">GirlsWhoML</a> outreach program.
-                <!-- I am also interested in the intersection of machine learning and neuroscience,
-                especially in the context of data-driven approaches towards explaining
-                the common learning mechanisms of the mammalian, avian and cephalopod brains. -->
             </p>
         </div>
-        <h2>Collaboration</h2>
-        <p>
-            I am always open to new collaborations and internships,
-            so feel free to contact me if you have
-            an interesting idea or dataset that you would like to work on together.
-            I am also open to supervising undergraduate and master student projects.
-        </p>
-        <h2>Projects</h2>
-        <a href="https://botcs.github.io/dopanet/"><div class="project-card">
-            <b>[DEMO] Generative Adversarial Networks Playground</b>:
-            An interactive visualization toolkit for understanding the training dynamics of GANs.
-            <center style="padding-top: 10px">
-                <img src="ganplayground.png" alt="ganplayground" width="100%">
-            </center>
-        </div></a>
-
-        <a href="https://botcs.github.io/label-delay/"><div class="project-card">
-            <b>[DEMO] Label Delay in Continual Learning</b>:
-            How do we utilize data from the future tasks before we have access to their labels?
-            <center style="padding-top: 10px">
-                <img src="ldocl-1.png" alt="ldocl-1" width="46%">
-                <img src="ldocl-2.png" alt="ldocl-2" width="46%">
-            </center>
-        </div></a>
-        <a href="https://botcs.github.io/wolfson-scheduler"><div class="project-card">
-            <b>[DEMO] Wolfson Scheduler</b>:
-            An open source project building on a novel vectorized solution for multi-set permutation problems.
-            <center style="padding-top: 10px">
-                <img src="wosch.png" width="80%">
-            </center>
-        </div></a>
-        <a href="https://botcs.github.io/embedding/"><div class="project-card">
-            <b>[DEMO] Contrastive Learning in your browser!</b>:
-            How can we visualize the metric space learned by contrastive methods such that elementary school students can understand it?
-            <center style="padding-top: 10px">
-                <img src="embedding.png" alt="embedding" width="100%">
-            </center>
-        </div></a>
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:IjCSPb-OGe4C"><div class="project-card">
-            <b>Diversified Dynamic Routing for Vision Tasks</b>:
-            how can we improve the performance of mixture of experts models
-            by explicitly diversifying the experts?
-            <center style="padding-top: 10px">
-                <img src="divdr-project.svg" alt="divdr-project" width="100%">
-            </center>
-        </div></a>
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:qjMakFHDy7sC"><div class="project-card">
-            <b>Multilevel Knowledge Transfer for Cross-Domain Object Detection</b>:
-            How can maximize the transfer of knowledge between different domains using
-            image level, feature level and instance level knowledge transfer?
-            <center style="padding-top: 10px">
-                <img src="mkt.svg" alt="mkt" width="80%">
-            </center>
-        </div></a>
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:u5HHmVD_uO8C"><div class="project-card">
-            <b>Domain Partitioning Network</b>:
-            How can we partition the data distribution efficiently using multiple discriminator networks?
-            <center style="padding-top: 10px">
-                <img src="dopanet.svg" alt="dopanet" width="100%">
-            </center>
-        </div></a>
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:9yKSN-GCB0IC"><div class="project-card">
-            <b>Multi-domain classification of cardiac signals with Deep Neural Networks</b>:
-            How to detect cardiac arrhythmia from portable ECG devices?
-            <center style="padding-top: 10px">
-                <img src="ecg.svg" alt="ecg" width="100%">
-            </center>
-        </div></a>
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:u-x6o8ySG0sC"><div class="project-card">
-            <b>SAM: Open-source face recognition framework</b>:
-            Full stack face recognition framework from data collection to model deployment.
-            <center style="padding-top: 10px">
-                <img src="sam.svg" alt="sam" width="60%">
-            </center>
-        </div></a>
 
         <h2>Teaching</h2>
+
         <p>
-            I have been hosting and organizing Machine Learning Seminars and Reading Groups:
-            <ul>
-                <li>Wolfson AI Discussions (University of Oxford)</li>
-                <li><a href="https://users.ox.ac.uk/~ndog0178/XML/xml_index.html" style="color: darkred">
-                    XML: Cross-Disciplinary Machine Learning Research Cluster (University of Oxford)
-                </a></li>
-                <li><a href="https://girlswhoml.com/" style="color: darkred">
-                    GirlsWhoML: Outreach program for underrepresented groups in machine learning (University of Oxford)
-                </a></li>
-            </ul>
-            I have been a teaching assistant for the following courses:
-            <ul>
-                <li>Deep Reinforcement Learning (BSc, Pázmány Péter Catholic University)</li>
-                <li>Applications of Machine Learning (BSc, Pázmány Péter Catholic University)</li>
-                <li>Information Theory (BSc, Pázmány Péter Catholic University)</li>
-                <li>Introduction to Programming (BSc, Pázmány Péter Catholic University)</li>
-            </ul>
-            Furthermore I have organized outreach events for high school students
-            and I have been a mentor for the following summer schools:
-            <ul>
-                <li><a href="https://4t.lauder.hu/index.php/2023/10/13/lama-mesterseges-intelligencia-muhelyfoglalkozas-sorozat/" style="color: darkred">
-                    LAMA AI Workshop Series 2023 (Budapest, Hungary)
-                </a></li>
-                <li><a href="https://www.airetreat.org/" style="color: darkred">
-                    AI Retreat 2023 (Nagymaros, Hungary)
-                </a></li>
-                <li><a href="https://csopamedia.blogspot.com/search/label/Csopa%20MI" style="color: darkred">
-                    Scientific Wonders 2018-2020 (Budapest, Hungary)
-                </a></li>
-                </li>
-            </ul>
-        </p>
+                I have been hosting and organizing Machine Learning Seminars and Reading Groups:
+                <ul>
+                    <li>Wolfson AI Discussions (University of Oxford)</li>
+                    <li><a href="https://users.ox.ac.uk/~ndog0178/XML/xml_index.html" style="color: darkred">
+                        XML: Cross-Disciplinary Machine Learning Research Cluster (University of Oxford)
+                    </a></li>
+                    <li><a href="https://girlswhoml.com/" style="color: darkred">
+                        GirlsWhoML: Outreach program for underrepresented groups in machine learning (University of Oxford)
+                    </a></li>
+                </ul>
+                I have organized outreach events for high school students and been a mentor for:
+                <ul>
+                    <li><a href="https://www.airetreat.org/" style="color: darkred">
+                        <span id="ai-retreat-spinner" class="ai-retreat-spinner">AI Retreat 2023 (Nagymaros, Hungary)</span>
+                    </a></li>
+                    <li><a href="https://4t.lauder.hu/index.php/2023/10/13/lama-mesterseges-intelligencia-muhelyfoglalkozas-sorozat/" style="color: darkred">
+                        LAMA AI Workshop Series 2023 (Budapest, Hungary)
+                    </a></li>
+                    <li><a href="https://csopamedia.blogspot.com/search/label/Csopa%20MI" style="color: darkred">
+                        Scientific Wonders 2018-2020 (Budapest, Hungary)
+                    </a></li>
+                </ul>
+                Furthermore, I have been a teaching assistant for the following courses:
+                <ul>
+                    <li>Deep Reinforcement Learning (BSc, Pázmány Péter Catholic University)</li>
+                    <li>Applications of Machine Learning (BSc, Pázmány Péter Catholic University)</li>
+                    <li>Information Theory (BSc, Pázmány Péter Catholic University)</li>
+                    <li>Introduction to Programming (BSc, Pázmány Péter Catholic University)</li>
+                </ul>
+            </p>
+
+        <h2>Projects</h2>
+
+        <a href="https://botcs.github.io/dopanet/">
+            <div class="project-card">
+                <b>[DEMO] Generative Adversarial Networks Playground</b>:
+                An interactive visualization toolkit for understanding the training dynamics of GANs.
+                <center style="padding-top: 10px">
+                    <img src="ganplayground.png" alt="ganplayground" width="100%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://botcs.github.io/label-delay/">
+            <div class="project-card">
+                <b>[DEMO] Label Delay in Continual Learning</b>:
+                How do we utilize data from the future tasks before we have access to their labels?
+                <center style="padding-top: 10px">
+                    <img src="ldocl-1.png" alt="ldocl-1" width="46%">
+                    <img src="ldocl-2.png" alt="ldocl-2" width="46%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://botcs.github.io/wolfson-scheduler">
+            <div class="project-card">
+                <b>[DEMO] Wolfson Scheduler</b>:
+                An open source project building on a novel vectorized solution for multi-set permutation problems.
+                <center style="padding-top: 10px">
+                    <img src="wosch.png" width="80%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://botcs.github.io/embedding/">
+            <div class="project-card">
+                <b>[DEMO] Contrastive Learning in your browser!</b>:
+                How can we visualize the metric space learned by contrastive methods such that elementary school students can understand it?
+                <center style="padding-top: 10px">
+                    <img src="embedding.png" alt="embedding" width="100%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:IjCSPb-OGe4C">
+            <div class="project-card">
+                <b>Diversified Dynamic Routing for Vision Tasks</b>:
+                how can we improve the performance of mixture of experts models by explicitly diversifying the experts?
+                <center style="padding-top: 10px">
+                    <img src="divdr-project.svg" alt="divdr-project" width="100%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:qjMakFHDy7sC">
+            <div class="project-card">
+                <b>Multilevel Knowledge Transfer for Cross-Domain Object Detection</b>:
+                How can we maximize the transfer of knowledge between different domains using image-level, feature-level and instance-level knowledge transfer?
+                <center style="padding-top: 10px">
+                    <img src="mkt.svg" alt="mkt" width="80%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:u5HHmVD_uO8C">
+            <div class="project-card">
+                <b>Domain Partitioning Network</b>:
+                How can we partition the data distribution efficiently using multiple discriminator networks?
+                <center style="padding-top: 10px">
+                    <img src="dopanet.svg" alt="dopanet" width="100%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:9yKSN-GCB0IC">
+            <div class="project-card">
+                <b>Multi-domain classification of cardiac signals with Deep Neural Networks</b>:
+                How to detect cardiac arrhythmia from portable ECG devices?
+                <center style="padding-top: 10px">
+                    <img src="ecg.svg" alt="ecg" width="100%">
+                </center>
+            </div>
+        </a>
+
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=n68BdMgAAAAJ&citation_for_view=n68BdMgAAAAJ:u-x6o8ySG0sC">
+            <div class="project-card">
+                <b>SAM: Open-source face recognition framework</b>:
+                Full stack face recognition framework from data collection to model deployment.
+                <center style="padding-top: 10px">
+                    <img src="sam.svg" alt="sam" width="60%">
+                </center>
+            </div>
+        </a>
     </div>
+
+    <script>
+        // AI Retreat horizontal spin: map mouse X to rotateY angle
+        (function () {
+            const spinner = document.getElementById('ai-retreat-spinner');
+
+            if (!spinner) return;
+
+            // smoothing
+            let targetAngle = 0;
+            let currentAngle = 0;
+
+            // map clientX -> angle: left => -160deg, center => 0deg, right => 160deg
+            function clientXToAngle(clientX) {
+                const w = window.innerWidth || document.documentElement.clientWidth;
+                const pct = Math.max(0, Math.min(1, clientX / w));
+                return (pct - 0.5) * 320; // -160 .. +160
+            }
+
+            // on mouse move over entire window (horizontal movement)
+            window.addEventListener('mousemove', (ev) => {
+                targetAngle = clientXToAngle(ev.clientX);
+            }, { passive: true });
+
+            // also update on touchmove for mobile horizontal interaction
+            window.addEventListener('touchmove', (ev) => {
+                if (ev.touches && ev.touches[0]) {
+                    targetAngle = clientXToAngle(ev.touches[0].clientX);
+                }
+            }, { passive: true });
+
+            // animate with requestAnimationFrame for smooth motion
+            function animate() {
+                // ease towards target
+                const diff = targetAngle - currentAngle;
+                currentAngle += diff * 0.15; // smoothing factor
+                spinner.style.transform = `rotateY(${currentAngle.toFixed(2)}deg)`;
+                requestAnimationFrame(animate);
+            }
+            // start
+            requestAnimationFrame(animate);
+
+            // optional: when mouse leaves window, gently return to 0
+            window.addEventListener('mouseleave', () => { targetAngle = 0; });
+            window.addEventListener('blur', () => { targetAngle = 0; });
+
+            // accessibility: allow keyboard arrow control (left/right) to nudge rotation
+            window.addEventListener('keydown', (ev) => {
+                if (ev.key === 'ArrowLeft') targetAngle = Math.max(-180, targetAngle - 15);
+                if (ev.key === 'ArrowRight') targetAngle = Math.min(180, targetAngle + 15);
+            });
+        })();
+    </script>
 </body>
+
+</html>
