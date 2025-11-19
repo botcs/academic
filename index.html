@@ -43,14 +43,32 @@
         .icon { color: darkred; }
         b { font-weight: 10000; color: darkred; }
 
-        /* --- AI Retreat spinner --- */
-        .ai-retreat-spinner {
+        /* --- AI Retreat party popper --- */
+        .ai-retreat-link {
+            position: relative;
             display: inline-block;
-            transform-style: preserve-3d;
-            transition: transform 120ms linear;
-            will-change: transform;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background 0.3s ease;
         }
-        #primary-content { perspective: 1200px; }
+        .ai-retreat-link:hover,
+        .ai-retreat-link:active {
+            background: linear-gradient(to bottom, #CD2A3E 0%, #CD2A3E 33%, #FFFFFF 33%, #FFFFFF 66%, #436F4D 66%, #436F4D 100%);
+        }
+        .party-popper {
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .ai-retreat-link:hover .party-popper,
+        .ai-retreat-link:active .party-popper {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -144,8 +162,8 @@
                 </ul>
                 I have organized outreach events for high school students and been a mentor for:
                 <ul>
-                    <li><a href="https://www.airetreat.org/" style="color: darkred">
-                        <span id="ai-retreat-spinner" class="ai-retreat-spinner">AI Retreat 2023 (Nagymaros, Hungary)</span>
+                    <li><a href="https://www.airetreat.org/" style="color: darkred" class="ai-retreat-link">
+                        AI Retreat 2023 (Nagymaros, Hungary)<span class="party-popper">🎉</span>
                     </a></li>
                     <li><a href="https://4t.lauder.hu/index.php/2023/10/13/lama-mesterseges-intelligencia-muhelyfoglalkozas-sorozat/" style="color: darkred">
                         LAMA AI Workshop Series 2023 (Budapest, Hungary)
@@ -257,58 +275,6 @@
         </a>
     </div>
 
-    <script>
-        // AI Retreat horizontal spin: map mouse X to rotateY angle
-        (function () {
-            const spinner = document.getElementById('ai-retreat-spinner');
-
-            if (!spinner) return;
-
-            // smoothing
-            let targetAngle = 0;
-            let currentAngle = 0;
-
-            // map clientX -> angle: left => -160deg, center => 0deg, right => 160deg
-            function clientXToAngle(clientX) {
-                const w = window.innerWidth || document.documentElement.clientWidth;
-                const pct = Math.max(0, Math.min(1, clientX / w));
-                return (pct - 0.5) * 320; // -160 .. +160
-            }
-
-            // on mouse move over entire window (horizontal movement)
-            window.addEventListener('mousemove', (ev) => {
-                targetAngle = clientXToAngle(ev.clientX);
-            }, { passive: true });
-
-            // also update on touchmove for mobile horizontal interaction
-            window.addEventListener('touchmove', (ev) => {
-                if (ev.touches && ev.touches[0]) {
-                    targetAngle = clientXToAngle(ev.touches[0].clientX);
-                }
-            }, { passive: true });
-
-            // animate with requestAnimationFrame for smooth motion
-            function animate() {
-                // ease towards target
-                const diff = targetAngle - currentAngle;
-                currentAngle += diff * 0.15; // smoothing factor
-                spinner.style.transform = `rotateY(${currentAngle.toFixed(2)}deg)`;
-                requestAnimationFrame(animate);
-            }
-            // start
-            requestAnimationFrame(animate);
-
-            // optional: when mouse leaves window, gently return to 0
-            window.addEventListener('mouseleave', () => { targetAngle = 0; });
-            window.addEventListener('blur', () => { targetAngle = 0; });
-
-            // accessibility: allow keyboard arrow control (left/right) to nudge rotation
-            window.addEventListener('keydown', (ev) => {
-                if (ev.key === 'ArrowLeft') targetAngle = Math.max(-180, targetAngle - 15);
-                if (ev.key === 'ArrowRight') targetAngle = Math.min(180, targetAngle + 15);
-            });
-        })();
-    </script>
 </body>
 
 </html>
