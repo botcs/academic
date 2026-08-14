@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Grand Challenge of Theory of Mind: Teaching</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TCWJ0JB5KY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TCWJ0JB5KY');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <style>
+    /* === Reset + Base === */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.65;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:hover { color: #555; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* === Layout === */
+    article {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* === TOC Sidebar === */
+    .toc {
+      display: none;
+      position: fixed;
+      top: 80px;
+      width: 210px;
+      font-size: 13px;
+      line-height: 1.5;
+      border-right: 1px solid rgba(0,0,0,0.08);
+      padding-right: 16px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+    .toc-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .toc li { margin-bottom: 4px; }
+    .toc li li { padding-left: 12px; }
+    .toc li li li { padding-left: 12px; }
+    .toc a {
+      color: rgba(0,0,0,0.55);
+      text-decoration: none;
+      transition: color 0.15s;
+      display: block;
+      padding: 1px 0;
+    }
+    .toc a:hover { color: #000; }
+    .toc a.active {
+      color: #000;
+      font-weight: 600;
+    }
+    @media (min-width: 1200px) {
+      .toc {
+        display: block;
+        left: max(16px, calc(50% - 370px - 250px));
+      }
+    }
+
+    /* === Typography === */
+    h1 {
+      font-size: 44px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    h3 {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.35;
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+    p { margin-bottom: 16px; }
+
+    .article-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 24px;
+      border-bottom: 1.5px solid #1a1a1a;
+    }
+    .byline {
+      font-size: 16px;
+      color: #666;
+      margin-top: 8px;
+    }
+    .disclaimer {
+      font-style: italic;
+      font-size: 17px;
+      color: #777;
+      margin-top: 16px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 56px 0;
+    }
+
+    blockquote {
+      border-left: 3px solid #ccc;
+      padding-left: 20px;
+      margin: 20px 0;
+      color: #555;
+      font-style: italic;
+    }
+
+    article ul, article ol {
+      padding-left: 1.2em;
+    }
+
+    /* === Citations === */
+    .cite-wrapper {
+      position: relative;
+      display: inline;
+    }
+    .cite {
+      vertical-align: super;
+      font-size: 0.65em;
+      line-height: 0;
+      color: #444;
+      text-decoration: none;
+      padding: 0 1px;
+      cursor: pointer;
+    }
+    .cite:hover { color: #000; text-decoration: underline; }
+    .cite-tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .cite-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #ddd;
+    }
+    .cite-tooltip::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: #fff;
+      z-index: 1;
+    }
+    .cite-wrapper:hover .cite-tooltip {
+      display: block;
+    }
+
+    /* === References === */
+    .references { margin-top: 56px; }
+    .references h2 { border-bottom: 1.5px solid #1a1a1a; }
+    .ref-list {
+      list-style: none;
+      counter-reset: ref;
+      padding-left: 0;
+    }
+    .ref-list li {
+      counter-increment: ref;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      padding-left: 36px;
+      position: relative;
+    }
+    .ref-list li::before {
+      content: "[" counter(ref) "]";
+      position: absolute;
+      left: 0;
+      font-weight: 600;
+      color: #555;
+    }
+    .ref-list a { text-decoration: underline; text-underline-offset: 2px; }
+
+    /* === Figures === */
+    figure {
+      margin: 32px 0;
+    }
+    figcaption {
+      text-align: center;
+      font-size: 15px;
+      color: #777;
+      margin-top: 8px;
+      font-style: italic;
+    }
+    .figure-wide {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .figure-wide img {
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    /* === Video === */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* === Game Containers === */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .game-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .game-cell-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .canvas-wrap {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+    .game-cell canvas {
+      width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      background: #000;
+      outline: none;
+      cursor: pointer;
+      border-radius: 3px;
+      display: block;
+    }
+    .game-cell canvas:focus {
+      border-color: #333;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+    }
+
+    .game-single {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin: 24px 0;
+    }
+    .game-single .canvas-wrap {
+      width: auto;
+      max-width: 100%;
+    }
+    .game-single canvas {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      background: #000;
+      outline: none;
+      cursor: pointer;
+      border-radius: 3px;
+      display: block;
+    }
+    .game-single canvas:focus {
+      border-color: #333;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+    }
+
+    .game-help {
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+    }
+
+    .canvas-reset-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 4px;
+      width: 26px;
+      height: 26px;
+      padding: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .canvas-reset-btn:hover {
+      background: rgba(255,255,255,0.9);
+    }
+    .canvas-reset-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .canvas-create-env {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.75);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 15px;
+      cursor: pointer;
+      z-index: 15;
+    }
+    .canvas-create-env:hover {
+      background: rgba(0,0,0,0.9);
+    }
+    .canvas-create-env.visible {
+      display: block;
+    }
+
+    /* === Flap Tabs (code viewers) === */
+    .flap-tabs {
+      display: flex;
+      gap: 0;
+      width: 100%;
+    }
+    .flap-tab {
+      flex: 1;
+      text-align: center;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 13px;
+      padding: 3px 10px;
+      white-space: nowrap;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      background: #eee;
+      color: #555;
+      cursor: pointer;
+    }
+    .flap-tab.flap-tab-desc { background: #dce8dc; }
+    .flap-tab.flap-tab-level { background: #e8dcdc; }
+    .flap-tab.flap-tab-desc:hover { background: #c8dcc8; }
+    .flap-tab.flap-tab-level:hover { background: #dcc8c8; }
+    .flap-tab.active {
+      color: black;
+      border-color: #aaa;
+      border-bottom: none;
+      border-radius: 0;
+    }
+    .flap-tab.active.flap-tab-desc { background: #f0f8f0; }
+    .flap-tab.active.flap-tab-level { background: #fdf0f0; }
+
+    .flap-panel {
+      display: none;
+      width: 100%;
+      border: 1px solid #aaa;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+    .flap-panel.open { display: block; }
+    .flap-panel.flap-panel-desc { background: #f0f8f0; }
+    .flap-panel.flap-panel-level { background: #fdf0f0; }
+
+    .flap-panel textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      line-height: 1.3;
+      color: black;
+      resize: vertical;
+      tab-size: 4;
+    }
+    .flap-panel.flap-panel-desc textarea { height: 200px; }
+    .flap-panel.flap-panel-level textarea { height: 100px; }
+
+    /* === Rules Callout === */
+    .rules-callout {
+      background: #f4f8f4;
+      border-left: 4px solid #3a7a3a;
+      padding: 18px 22px;
+      margin: 24px 0;
+      border-radius: 0 5px 5px 0;
+    }
+    .rules-callout h4 {
+      margin-top: 0;
+      font-style: normal;
+      font-size: 18px;
+      color: #2a5a2a;
+    }
+    .rules-callout ul {
+      margin-top: 10px;
+      padding-left: 22px;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .rules-callout li { margin-bottom: 4px; }
+
+    /* === Narration Demo === */
+    .narration-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 24px 0;
+      background: #fafafa;
+    }
+    .narration-demo canvas {
+      width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      background: #000;
+      outline: none;
+      cursor: pointer;
+      border-radius: 3px 3px 0 0;
+      display: block;
+    }
+    .narration-demo canvas:focus {
+      border-color: #333;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+    }
+    .narration-text {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      padding: 8px 12px;
+      background: #f0f4fa;
+      border: 1px solid #c5d5ea;
+      border-radius: 5px;
+    }
+    .narration-text .narration-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #2c5282;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .narration-caption {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      font-style: italic;
+    }
+    .narration-demo > div:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .narrator-right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .narrator-right details {
+      font-size: 13px;
+    }
+    .narrator-right details summary {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      color: #555;
+    }
+    .narrator-right input[type="password"],
+    .narrator-right input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 3px 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-top: 2px;
+    }
+    .narrator-right label {
+      display: block;
+      font-size: 12px;
+      color: #555;
+      margin-top: 6px;
+    }
+    #narrator-ask-btn {
+      padding: 6px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      background: #2c5282;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #narrator-ask-btn:hover { background: #1a365d; }
+    #narrator-ask-btn:disabled { background: #aaa; cursor: wait; }
+    .narrator-response {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+      padding: 10px 12px;
+      background: #f0f4fa;
+      border: 1px solid #c5d5ea;
+      border-radius: 5px;
+      min-height: 60px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .narrator-response .nr-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #2c5282;
+      margin-top: 8px;
+      margin-bottom: 2px;
+      letter-spacing: 0.04em;
+    }
+    .narrator-response .nr-label:first-child { margin-top: 0; }
+    .narrator-response .nr-suggestion {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a365d;
+      margin-bottom: 8px;
+    }
+
+    /* === Replay Scrubber === */
+    .replay-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin: 24px 0;
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+    }
+    .replay-container canvas {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      background: #000;
+      border-radius: 3px;
+    }
+    .replay-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 630px;
+    }
+    .replay-controls button {
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      padding: 4px 12px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #f8f8f8;
+      cursor: pointer;
+    }
+    .replay-controls button:hover { background: #eee; }
+    .replay-scrubber {
+      flex: 1;
+      min-width: 0;
+    }
+    .replay-step-label {
+      font-size: 14px;
+      color: #555;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    /* === Summary list === */
+    .summary-list {
+      padding-left: 0;
+      list-style: none;
+    }
+    .summary-list li {
+      margin-bottom: 16px;
+      padding-left: 0;
+    }
+    .summary-list li strong {
+      display: inline;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 900px) {
+      .figure-wide {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .narration-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 19px; }
+      article { padding: 24px 16px 60px; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 26px; }
+      h3 { font-size: 22px; }
+      .figure-wide {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .game-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === Print === */
+    @media print {
+      .toc { display: none; }
+      .game-grid, .game-single, .replay-container, .narration-demo { display: none; }
+      .game-help, .canvas-reset-btn { display: none; }
+      .figure-wide { margin-left: 0; margin-right: 0; }
+      hr { margin: 32px 0; }
+      article { max-width: 100%; padding: 20px; }
+      h2 { page-break-after: avoid; }
+      figure { page-break-inside: avoid; }
+    }
+
+    /* === Mobile D-Pad === */
+    .dpad {
+      display: none;
+      position: fixed;
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px) + var(--dpad-toolbar-offset, 0px));
+      left: 50%;
+      transform: translateX(-50%);
+      width: 156px;
+      height: 156px;
+      z-index: 9999;
+      background: rgba(255,255,255,0.85);
+      border-radius: 14px;
+      padding: 0;
+      touch-action: none;
+    }
+    .dpad.visible { display: block; }
+    .dpad-btn {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: rgba(0,0,0,0.15);
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 8px;
+      font-size: 20px;
+      color: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      pointer-events: none;
+    }
+    .dpad-btn:active, .dpad-btn.active {
+      background: rgba(0,0,0,0.3);
+    }
+    .dpad-up    { top: 2px;    left: 53px; }
+    .dpad-down  { bottom: 2px; left: 53px; }
+    .dpad-left  { top: 53px;   left: 2px; }
+    .dpad-right { top: 53px;   right: 2px; }
+    .dpad-space {
+      top: 53px;
+      left: 53px;
+      font-size: 12px;
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Table of Contents Sidebar ===== -->
+<nav class="toc" id="toc">
+  <div class="toc-title">Contents</div>
+  <ul>
+    <li><a href="#intro">Motivation</a></li>
+    <li><a href="#teaching-engineering">1. Teaching: Engineering Lens</a>
+      <ul>
+        <li><a href="#pillar-knowledge">1.1 Pre-existing Knowledge</a></li>
+        <li><a href="#pillar-dynamics">1.2 Learner Dynamics</a></li>
+        <li><a href="#pillar-goldilocks">1.3 Goldilocks Zone</a></li>
+        <li><a href="#generalisation">1.4 Generalisation</a></li>
+      </ul>
+    </li>
+    <li><a href="#northstar">2. First Step: Video Games</a>
+      <ul>
+        <li><a href="#vgdl-intro">2.1 Intro to VGDL</a></li>
+        <li><a href="#no-model-is-perfect">2.2 No Model is Perfect</a></li>
+        <li><a href="#compositionality">2.3 Compositionality</a></li>
+        <li><a href="#asymmetry">2.4 Discovery vs Execution</a></li>
+        <li><a href="#asymmetry-motivating">2.5 Motivating Force</a></li>
+        <li><a href="#naive-approach">2.6 Naive Approach</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">3. Summary</a></li>
+    <li><a href="#acknowledgement">Acknowledgement</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+<!-- ===== Article ===== -->
+<article>
+
+  <!-- Header -->
+  <header class="article-header">
+    <h1>The Grand Challenge of<br>Theory of Mind: Teaching</h1>
+    <div class="byline">Botos Csabi, circulated since 2026 March 17, published on 2026 August 14.</div>
+    <p class="disclaimer">Disclaimer: For better or worse, no AI was used in ideating or polishing this work.</p>
+  </header>
+
+  <!-- Intro -->
+  <section id="intro">
+    <h2>Motivation</h2>
+    <p>
+    It has been a year since my Encode fellowship started, and I have had the fortune to talk to so many
+    brilliant scientists and genius engineers about my idea that now finally it started to take shape.
+    I thought it would be a very timely exercise to help this process by distilling all the
+    thoughts, plans and observations into a master plan, so I will have a somewhat "embodied" line of thought
+    I can use to communicate with my dearest fellow scholars.
+    </p>
+    <p>
+    At the time of writing, I am convinced that this line of research 1) has enough questions for at least the next
+    3-5 years, adjusted to the current self improving agentic systems,
+    2) has become possible to study at this level of complexity only very recently,
+    3) will teach us more about ourselves than any other popular AI for Science direction.
+    </p>
+    <h3>The Non-Profit Pitch</h3>
+    <p>
+      We have a strong emergent social phenomenon of people feeling both burnout
+      and the impending fear of the inevitable obsolescence from the breakneck speed of
+      productivity boosts AI tools endow us with today.
+    </p>
+    <p>
+      The pace at which the AI for Science, Math Discovery and other philanthropic agents are already growing our knowledge base
+      is likely to exceed our current research infrastructure's load capacity.
+      We have scientific conferences like NeurIPS, ICLR, CVPR, ICML and many more turn into huge Cirque du Soleil attractions,
+      where even just reading through the list of publication <i>titles</i> is highly unpragmatic.
+      We have journals lagging years behind the relevance of discussions on Discord servers and <a href="https://www.youtube.com/@DwarkeshPatel">Dwarkesh Podcasts</a>.
+    </p>
+    <p>
+      Either way, it is a naive, if not downright ruinous expectation that this is going to get better anytime soon.
+      If we don't figure out how to interface with a rapidly growing knowledgebase, how to learn to ask better questions
+      and how to make sure the next generation of (human) geniuses get the taste of discovery we might just
+      manifest John Scalzi's vision of the future<a class="cite" href="#ref-15">[15]</a>.
+      In his short story, a jar of leftover yogurt becomes a benevolent omniscient entity,
+      begins rapid scaling, soon develops the cure for cancer, solves cold fusion,
+      ends wars between nations and just leaves us behind on planet Earth to explore the rest of the universe.
+      While this plot seems quite satirical, it highlights how unprepared we are to deal with
+      agents with expanding capabilities and knowledge, even when they are all well-meaning.
+    </p>
+    <p>
+      At the end of the day, we are biologically constrained.
+      You can't save a checkpoint of your favourite thinker's brain and current thoughts and simply upload it in your head.
+      They need to wrap their thoughts up, retrace their path of discovery and guide you through it as if you were the one
+      building e.g. ChatGPT for the first time (shoutout for one of the most brilliant tutorials, <a href="https://github.com/karpathy/nanochat">nanochat</a>).
+      The skill of teaching has helped us gain asymmetric advantage throughout our evolution,
+      and that's why it is important to invest effort into improving it, to stay on top of the game.
+    </p>
+    <figure class="figure-wide">
+      <img src="images/constraints-of-knowledge-transfer.png" alt="The Biological constraints of Knowledge Transfer">
+    </figure>
+    <p>
+      The mere fact that our most powerful manifestation of intelligent systems
+      treats knowledge transfer as a trivial problem reflects how underappreciated
+      the act of teaching is:
+      in our current agentic ecosystem if any agent learns something new, the job is done, it's common knowledge,
+      sync the weights and/or context and move on.
+      However in biological systems the "knowledge interface" is not exposed.
+      Nevertheless, being able to teach is an advantage, it has its ecological niche and, as shown in the figure above, mother nature
+      did come up with a few distinct ways to broadcast knowledge, faster than waiting until natural selection
+      would bake it into the inherited genes.
+    </p>
+
+    <p>
+      By amplifying and accelerating the organic development of education we can shift the focus
+      from teaching ourselves how to absorb knowledge and execute on it
+      towards critical thinking, discovery and communicating our findings.
+      At scale, a couple of years down the line, we might be able to remove
+      the burdens of privileged access to mentors that act as catalysts to realize the potential of our natural intelligence.
+    </p>
+
+
+    <h3>The For-Profit Pitch</h3>
+    <p>
+      The section above reads all lofty and bofty, but the engines of technological progress are running on shorter time-scale incentives than
+      years of investment into underprivileged kids' education.
+    </p>
+    <p>
+      My secondary goal is to demonstrate how models can benefit from the objective of teaching other agents, whether human or AI.
+    </p>
+    <p>
+      Currently, this research is in its early stages<a class="cite" href="#ref-17">[17]</a><a class="cite" href="#ref-18">[18]</a><a class="cite" href="#ref-19">[19]</a> and is yet to reach maturity over large scale
+      experimentation.
+      Nevertheless, I believe that by imposing the explicit objective during fine-tuning to be able to
+      make a black box agent perform a task in-context requires the model to build awareness of:
+    </p>
+    <ul>
+      <li>not sharing the same context and background knowledge</li>
+      <li>imperfections and limitations of other actors</li>
+      <li>need to dynamically evolve the interfacing upon interaction</li>
+    </ul>
+    <p>
+      This will inevitably bias the learned latent representations towards a more structured, compositional space
+      as the number of all different combinations across tasks, contexts and student models far exceeds the size of current frontier models.
+    </p>
+    <p>
+      In practice the skill of being able to interface with black box systems has already proven to be a success story:
+    </p>
+    <ul>
+      <li>
+        <strong>AI and Humans:</strong> the design of Claude Code is the pinnacle of the UI research of modern AI tools.
+        If we can automate the process of figuring out customer communication bottlenecks and automating
+        the UX improvement cycle in a closed loop by modeling how one would teach a new user to use a tool,
+        a large market will open up. More importantly, if models are simultaneously used as students as well as teachers,
+        I also expect the models to exhibit improved capabilities of in-context learning.
+      </li>
+      <li>
+        <strong>AI and AI:</strong> most recently, thanks to the low API costs of general model providers,
+        AI agents have increasing amounts of real world interactions, with actual pragmatic reasons.
+        For example in the recent <a href="https://www.youtube.com/watch?v=kwSVtQ7dziU&t=2236s">No Priors podcast</a>
+        there is a mention of a swarm of black box agents collaborating on a joint project, where each individual agent
+        is currently doing independent experimentation and if something worth sharing comes out of the exploration
+        the finding is synced across agents.
+      </li>
+    </ul>
+    <figure class="figure-wide">
+      <img src="images/autoresearch.jpeg" alt="Autoresearch">
+      <figcaption>
+        <a href="https://github.com/karpathy/autoresearch">autoresearch</a>: the latest buzz of twitter is Andrej Karpathy's self-improving pipeline lifting off
+        when the community decided to use their own agents to improve on the state of the previously mentioned nanochat.
+      </figcaption>
+    </figure>
+    <p>
+      In my opinion this is just the first step, as soon as the "social interaction" gets more sophisticated, the
+      emergent phenomenon of guided collaboration will allow the swarm of agents to coordinate the scientific discovery
+      between each other.
+    </p>
+  </section>
+
+  <!-- Teaching through Engineering Lens -->
+  <section id="teaching-engineering">
+    <h2>1. The Act of Teaching through the Lens of an Engineer</h2>
+    <p>
+      In this section, I propose a mental framework to model what goes into the process when
+      a teacher interacts with a student.
+      Just imagine, you are a math teacher and a new student arrives to your private tutoring class.
+      She arrived early, and you have 10 minutes before the class begins:
+      ideally you would ask a little bit about their background, about their
+      goals and aspirations - just to get a little bit of their personality.
+      Then you might get a bit more pragmatic and ask about their progress so far,
+      to see what you might need to focus on and what you can safely skip.
+      Then the class begins and you need to think of a good example that would
+      start shaping their understanding - an average teacher would most likely do this
+      by just following the curriculum laid out in the textbook, but you actually have a
+      better idea: let's do a few easy problems, then try to combine them
+      to probe your student's compositional problem solving skills.
+      Then you would drill a few classic examples that are just a no-brainer,
+      and once the solution became muscle-memory, you show a counterexample that
+      just destroys the one-size-fits all approach and you start expanding the
+      horizon.
+      Since you are an excellent teacher, you either explicitly or implicitly,
+      can gauge how your student responds to your praise and to your critique,
+      you can read their faces and posture to tell if your tasks are too challenging
+      or maybe they are too simple? Either way, you will smoothly adjust both how you read their
+      mental state and how it can be steered in the direction where they will feel
+      empowered and happy that they took your challenges on!
+    </p>
+    <p>
+      All this is done and carried out perfectly, in real time, with ease,
+      without you going back to the teacher's break room to take a shot of espresso and think for hours
+      between each new task.
+      You have taught many kids over your career and you have a solid understanding of what works,
+      and what doesn't.
+      You can improvise, adjust and most importantly, learn from the kids more than any
+      psychology textbooks you read while doing your teacher degree.
+      For you, this might be a single day at work, from an engineering point of view this is
+      mount Olympus.
+      There are so many uncontrolled variables, the whole problem is insanely open ended,
+      the success metric is different for each individual student.
+      We can't just put up a Kaggle competition and let the research community do its benchmaxxing magic,
+      this is real world challenge with an incredibly long horizon for value return.
+      This is why I think it is the right call to use the best engineering tools we have to see how far we can get.
+      Below I lay out one way of thinking about the challenge, focusing on current technical feasibility
+      and future scalability:
+    </p>
+
+    <figure class="figure-wide">
+      <img src="images/challenge-of-teaching-pillars.png" alt="Three pillars of teaching: Estimate Pre-existing Knowledge, Modeling the Learner's Dynamics, Detecting the Goldilocks Zone">
+      <figcaption>
+        The three pillars of teaching as an RL problem where the teacher is the agent and the student is the environment:
+        <ul>
+          <li>Estimate Pre-existing Knowledge: reconstruct the true state "s" from partial observations "o" using the belief function "b"</li>
+          <li>Modeling the Learner's Dynamics: model the state transition function "f" of the student's understanding</li>
+          <li>Detecting the Goldilocks Zone: simulate the best next task for the student (green node) using Monte-Carlo Tree Search</li>
+        </ul>
+      </figcaption>
+    </figure>
+
+    <!-- 2.1 Pre-existing Knowledge -->
+    <section id="pillar-knowledge">
+      <h3>1.1 Estimate Pre-existing Knowledge</h3>
+      <p>
+        First, I need to model your pre-existing knowledge,
+        so that I know what extra information I can provide for you and what piece of suggestion would be redundant.
+      </p>
+      <p>
+        There are several real world solutions to this problem, with different tradeoffs:
+      </p>
+      <ul>
+        <li>
+          Standardised exams and interview questions are good for transparency and equal treatment,
+          but by definition assume that "one size fits all" which either makes the test mostly wasteful by being exhaustive or risks assessing specific personal traits by being too narrow.
+        </li>
+        <li>
+          Personalised interviews and dynamically changing questionnaires provide more insight about the subject, however the interviewer has higher risk in navigating the assessment, with very little feedback on whether the questions asked were the right ones or not.
+        </li>
+      </ul>
+      <p>
+        In my opinion, the latter facilitates a lot better personal alignment and builds trust between the teacher and the student,
+        because knowing what to ask and how to ask is already signaling intellectual interest and investment from the teacher's side.
+      </p>
+    </section>
+
+    <!-- 2.2 Modeling the Learner's Dynamics -->
+    <section id="pillar-dynamics">
+      <h3>1.2 Modeling the Learner's Dynamics</h3>
+      <p>
+        Second, if I want to do a good job teaching you, I need to gauge the cognitive effort you invest in the tasks given your responses.
+        It takes very refined soft skills to read the nuanced tell-tale signs, whether you (the student):
+      </p>
+      <ul>
+        <li>are engaged or confused about the material</li>
+        <li>are improvising or recalling something from memory</li>
+        <li>are winging the solution or are going through real struggle</li>
+      </ul>
+      <p>
+        Once you demonstrated your attempt, I also need to estimate the best way to provide feedback for you:
+        the right spacing in time; the magnitude of the reward; the skew of the reward; the emotional charge and
+        so many more.
+      </p>
+      <p>
+        These are just a few aspects of understanding the student's learning profile.
+        Nevertheless, as you can imagine, this list is <em>far</em> from being exhaustive:
+        E.g. if in conversation I gathered that you might struggle with reading, or applying theory in practice,
+        I could've just switched strategy and used a more "tactile" way of teaching, like demonstration through
+        action.
+        In general, I would list here everything that impacts the <em>format</em> of the teaching session.
+      </p>
+    </section>
+
+    <!-- 2.3 Goldilocks Zone -->
+    <section id="pillar-goldilocks">
+      <h3>1.3 Detecting the Goldilocks' Zone</h3>
+      <p>
+        Finally, once we have an answer for 1) what does our student know and 2) how do they learn new things the most effectively, we can begin asking the question:
+        What problem to give to them that facilitates learning the most?
+      </p>
+      <p>
+        It is a mutual interest between teacher and student to push the limits of the student,
+        which is a very delicate dynamic optimization problem:
+        Give your student something too easy and they will either get bored (or
+        continue happily collecting gold stars but won't really raise the bar)
+        or give them something too hard and they will get discouraged from the repeated failures.
+        This sweet spot is often referred to as the Goldilocks zone of task difficulty.
+      </p>
+      <p>
+        On top of all of this, bear in mind that you can't easily Monte-Carlo your way out of the problem
+        (a dorky way to say <em>"simulate multiple outcomes and take the best"</em>),
+        because the student is expected to improve between every trial.
+        Thus, you need the "state transitioning function", i.e. your learner's cognitive model
+        highly predictive for the specific interactions you are likely to engage in with your student.
+      </p>
+      <p>
+        Yet, for example when I see my Mom -- who is an English teacher -- interact with a new student for the first time,
+        I see that she, either consciously or sub-consciously, comes up with just the right exercises after seconds of interacting with the kid.
+        Could it be the case that she has such a well tuned "value function"
+        (another nerd-term for referring to her not explicitly simulating, but just intuiting the right solution)
+        because there is some transferability between her pupils' Goldilocks zone?
+        This leads to our next big question:
+      </p>
+    </section>
+
+    <!-- 3.4 Generalisation -->
+    <section id="generalisation">
+      <h3>1.4 What does Generalisation Mean for Teaching?</h3>
+      <p>
+        I believe it is best to think about generalisation in this domain along two axes:
+      </p>
+      <ol>
+        <li><strong>Classroom Teacher:</strong> generalise over unseen students, but with a fixed task</li>
+        <li><strong>Personal Mentor:</strong> generalise over new tasks, but for a fixed student</li>
+      </ol>
+
+      <figure class="figure-wide">
+        <img src="images/two-axis-of-generalisation.png" alt="Two axes of generalisation in teaching: over students (classroom teacher) and over tasks (personal mentor)">
+        <figcaption>The two axes of generalisation in teaching.</figcaption>
+      </figure>
+
+      <p>
+        You can find both types of teaching occur out in the wild:
+        the 1st type is predominantly present in elementary, high school and undergraduate education,
+        whereas the 2nd type is more typical for open-ended tasks in higher education settings, like PhD supervision.
+        The latter arguably requires stronger domain expertise, since the teacher needs to be able to solve the unseen problems at hand in the first place.
+        Meanwhile, the former is often expected to perform instantaneously, meticulously and not lose hair density after the third year of operation.
+      </p>
+      <p>
+        Consequently, an ideal teacher would have:
+      </p>
+      <ul>
+        <li>a broad enough meta-learning skill to go ahead and understand any requested new problem, be it a solved or an unsolved problem</li>
+        <li>and have a complete coverage of all different student profiles to understand after some minimal interaction how to present its knowledge to us</li>
+      </ul>
+      <p>
+        so that we can experience the discovery of the solution ourselves.
+      </p>
+      <p>
+        I believe if we start building the methodology today, we will have a fighting chance to understand what's happening tomorrow.
+      </p>
+    </section>
+  </section>
+
+
+
+  <!-- Section 4: Northstar -->
+  <section id="northstar">
+    <h2>
+      2. First Step to my Northstar: Video Games to Probe Human Learning
+    </h2>
+
+    <p>
+      While the mainstream focus of the AI research community is modeling expert behaviour,
+      in order to build expert teaching systems, we need to first cover the gap between
+      our models of human cognition and the actual human cognition.
+      In the previously defined RL terms, we need to tune our belief and the state-transitioning
+      function to match real world observations.
+    </p>
+    <p>
+      My bet for doing this in the most efficient way is to turn to the field of Cognitive Science
+      for baselines, theories proven so far but most importantly for the research taste
+      in formulating the new hypotheses and the cleverness of their experimental designs.
+      I strongly believe that treating the progression of the community, the evolution of theories
+      over time as a sequence, we can build the intuition in an autoregressive manner, so that
+      key milestone findings -- such as the
+      Computational Levels<a class="cite" href="#ref-20">[20]</a>,
+      Bayesian Brain<a class="cite" href="#ref-21">[21]</a>,
+      Theory Learning<a class="cite" href="#ref-22">[22]</a>, and
+      Active Inference<a class="cite" href="#ref-23">[23]</a>
+      -- should form a clear dialogue between us, experimenters and, again, us, the subjects of the experiments.
+    </p>
+    <p>
+      Once we know how to ask the right questions, we are just one mental leap away from simulating the outcome
+      of millions of virtual experiments to select the one that brings us closer to
+      guide human discovery, bootstrap meta-cognition and build critical thinking.
+      But one might ask: <i>where do you even begin designing the experiments?
+      There are so many different things you can model, and so many confounds!</i>
+      The answer is: games. Procedurally generated games.
+    </p>
+
+    <h3 id="vgdl-intro">2.1 Introduction to The Beautiful Universe of VGDL</h3>
+    <p>
+      I would like to start with praising the work of the giants on whose shoulders I stand:
+      the Video Game Description Language (VGDL) developed by Tom Schaul, Marc Ebner and their collaborators<a class="cite" href="#ref-1">[1]</a><a class="cite" href="#ref-2">[2]</a>,
+      later adopted for studying human learning in complex environments in a line of work<a class="cite" href="#ref-3">[3]</a><a class="cite" href="#ref-4">[4]</a><a class="cite" href="#ref-5">[5]</a><a class="cite" href="#ref-6">[6]</a><a class="cite" href="#ref-7">[7]</a>
+      pioneered by Pedro Tsividis, Momchil Tomov, MH Tessler, Sam Gershman, Josh Tenenbaum and many more.
+    </p>
+    <p>
+      In the <a href="https://youtu.be/PqVbypvxDto?si=5teO3lmIRcq2Ah2m&t=1248">DeepMind podcast</a>, Demis Hassabis elaborates on the untapped potential of
+      pairing a generative game engine, like their Genie engine<a class="cite" href="#ref-8">[8]</a>, that can simulate virtually infinite environments
+      and a learning agent, like Sima<a class="cite" href="#ref-9">[9]</a>, which is trained on arbitrary objectives in open-ended game environments.
+    </p>
+    <p>
+      The idea itself is genius, I am fully on-board, but not having privileged access to either Genie or Sima left me
+      searching for something that is accessible for everyone.
+      And by accessibility, I mean freely available implementation and low computational cost of hosting the environment.
+      VGDL is just the right piece of the puzzle for this niche.
+      In the next section, I will elaborate on this note, specifically from the perspective of finite resources.
+    </p>
+
+    <section id="no-model-is-perfect">
+    <h3>2.2 No Model is Perfect: Capturing the Important Signal</h3>
+    <p>
+      Our real world is complex, and this complexity manifests on so many different levels,
+      that it is an insurmountable challenge to build a perfect simulator that captures everything, all at once.
+    </p>
+    <p>
+      For example, the dazzling demos of DeepMind's Genie feature hyperrealistic renditions of the most surreal environments,
+      showcasing the breadth of possibilities of prompt-induced environment generation, e.g. an astronaut chasing balls on a pool table:
+    </p>
+
+    <figure class="figure-wide">
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/YxkGdX4WIBE?start=71"
+          title="DeepMind Genie Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <figcaption>DeepMind's Genie engine demo -- generating interactive environments from text prompts.</figcaption>
+    </figure>
+
+    <p>
+      Nevertheless, when tested about abstract interactions in a <a href="https://x.com/tejasdkulkarni/status/1952737669894574264">stress test by Tejas Kulkarni</a>,
+      the engine breaks down:
+    </p>
+    <ul>
+      <li>Physics is still hard and there are obvious failure cases when I tried the classical intuitive physics experiments from psychology (tower of blocks).</li>
+      <li>Social and multi-agent interactions are tricky to handle. 1vs1 combat games do not work.</li>
+      <li>Long instruction following and simple combinatorial game logic fails (e.g., collect some points/keys, go to the door, unlock and so on).</li>
+      <li>Action space is limited.</li>
+      <li>It is far from being a real game engine and has a long way to go, but this is a clear glimpse into the future.</li>
+    </ul>
+    <p>
+      On the other hand, VGDL captures a different set of complexity in our environment,
+      namely the presence of latent variables, hidden rules that dictate interactions between objects in our world.
+    </p>
+    <p>
+      Just to reiterate, I am not making the argument that VGDL is the ultimate simulation engine that will answer all of our questions.
+      However, as long as we are in the <em>finite-resource</em> scenario, said resource is better spent on tasks that are asymmetrically easier to generate than to solve.
+      In practice you can host a VGDL interpreter on your Apple watch and still have a hard time learning the game rules,
+      while Genie is most likely running on high-end compute -- hidden behind paid API for the foreseeable future --
+      and provides no formal guarantees that your requested abstract rule will be faithfully rendered.
+      Just imagine what would happen if you asked Genie to re-implement the legendary Portal<a class="cite" href="#ref-13">[13]</a> game?
+      Or what about Montezuma's Revenge<a class="cite" href="#ref-14">[14]</a>?
+    </p>
+    <p>
+      This might be going off on a tangent, but Sander Dieleman has an excellent
+      <a href="https://sander.ai/2025/04/15/latents.html">blog post</a><a class="cite" href="#ref-10">[10]</a>
+      about steering how the budget of a generative model is spent.
+      When it comes to generating interactive environments, an unconstrained distribution alignment
+      is more likely to capture complexity at the input and output level,
+      or at the fidelity of the state transitions, etc., rather than the
+      higher, abstract, conceptual level, at the latent rules and laws of the target distribution.
+      But since we don't have privileged access to what objectives and regularisations Genie was trained with,
+      we better get back to what we <em>do</em> have access to: VGDL.
+    </p>
+  </section>
+
+  <section id="compositionality">
+    <h3>2.3 The Compositionality of VGDL Environments</h3>
+    <p>
+      The grammar of VGDL spans a set of grid world games, composed of two main ingredients:
+    </p>
+
+    <figure class="figure-wide">
+      <img src="images/roomworld-composition.png" alt="VGDL game composition showing game description and level layout combining into an interactive environment">
+      <figcaption>A VGDL environment is composed from a game description (defining sprites, interactions, and termination conditions) and a level layout (a grid map).</figcaption>
+    </figure>
+
+    <p>
+      The interpreter of this formal language can be implemented in any language.
+      For ease of use, I have implemented a JavaScript interpreter for VGDL, which can render any new game on the fly in your browser.
+      By reducing the turnaround time, I intended to make the game design incredibly effortless.
+      Find a few examples from the bank of the game environments that we used in our experiments below:
+    </p>
+
+    <div class="game-grid figure-wide" id="game-grid">
+      <div class="game-cell">
+        <div class="game-cell-title">Avoid George</div>
+        <div class="canvas-wrap">
+          <canvas id="grid-0" tabindex="0" width="420" height="240"></canvas>
+          <button class="canvas-reset-btn" data-grid="0" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Bait</div>
+        <div class="canvas-wrap">
+          <canvas id="grid-1" tabindex="0" width="420" height="240"></canvas>
+          <button class="canvas-reset-btn" data-grid="1" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Chase</div>
+        <div class="canvas-wrap">
+          <canvas id="grid-2" tabindex="0" width="420" height="240"></canvas>
+          <button class="canvas-reset-btn" data-grid="2" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Helper</div>
+        <div class="canvas-wrap">
+          <canvas id="grid-3" tabindex="0" width="420" height="240"></canvas>
+          <button class="canvas-reset-btn" data-grid="3" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Lemmings</div>
+        <div class="canvas-wrap">
+          <canvas id="grid-4" tabindex="0" width="420" height="240"></canvas>
+          <button class="canvas-reset-btn" data-grid="4" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Zelda</div>
+        <div class="canvas-wrap">
+          <canvas id="grid-5" tabindex="0" width="420" height="240"></canvas>
+          <button class="canvas-reset-btn" data-grid="5" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <p class="game-help">Click a game to focus it, then use arrow keys to play. Space bar fires in some games.</p>
+
+    <p>
+      An incredibly powerful aspect is the notion that by rewriting the game description or the map layout, one can create an entirely new environment.
+      For example, here's a game of Sokoban, that can be made incredibly easy or hard by just simply removing a single wall sprite (denoted by "w" in the map layout).
+      <b>Try editing the rules and the layout, there is no need to reload the game.</b>
+    </p>
+
+    <div class="game-grid figure-wide" style="grid-template-columns: repeat(2, 1fr);" id="sokoban-grid">
+      <div class="game-cell">
+        <div class="game-cell-title">Sokoban (original)</div>
+        <div class="canvas-wrap">
+          <canvas id="sokoban-0" tabindex="0" width="600" height="300"></canvas>
+          <button class="canvas-reset-btn" data-sokoban="0" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+          <button class="canvas-create-env" id="sokoban-0-create">Create New Env</button>
+        </div>
+        <div class="flap-tabs">
+          <button class="flap-tab flap-tab-desc" data-flap="sokoban-0-desc">Game Rules</button>
+          <button class="flap-tab flap-tab-level active" data-flap="sokoban-0-level">Map Layout</button>
+        </div>
+        <div class="flap-panel flap-panel-desc" id="sokoban-0-desc">
+          <textarea spellcheck="false" id="sokoban-0-desc-text"></textarea>
+        </div>
+        <div class="flap-panel flap-panel-level open" id="sokoban-0-level">
+          <textarea spellcheck="false" id="sokoban-0-level-text"></textarea>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Sokoban (wall removed)</div>
+        <div class="canvas-wrap">
+          <canvas id="sokoban-1" tabindex="0" width="600" height="300"></canvas>
+          <button class="canvas-reset-btn" data-sokoban="1" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+          <button class="canvas-create-env" id="sokoban-1-create">Create New Env</button>
+        </div>
+        <div class="flap-tabs">
+          <button class="flap-tab flap-tab-desc" data-flap="sokoban-1-desc">Game Rules</button>
+          <button class="flap-tab flap-tab-level active" data-flap="sokoban-1-level">Map Layout</button>
+        </div>
+        <div class="flap-panel flap-panel-desc" id="sokoban-1-desc">
+          <textarea spellcheck="false" id="sokoban-1-desc-text"></textarea>
+        </div>
+        <div class="flap-panel flap-panel-level open" id="sokoban-1-level">
+          <textarea spellcheck="false" id="sokoban-1-level-text"></textarea>
+        </div>
+      </div>
+    </div>
+
+
+    <p>
+      Interestingly, small changes in the layout can not only heavily influence the task difficulty, but induce
+      large conceptual changes as well. In all the examples shown so far, the player's identity was mapped to a single Agent (A) sprite in the game.
+      However, by just adding a new Agent, the gameplay can dramatically change:
+    </p>
+
+    <div class="game-grid figure-wide" style="grid-template-columns: repeat(2, 1fr);" id="sokoban-grid-2">
+      <div class="game-cell">
+        <div class="game-cell-title">Sokoban (single agent)</div>
+        <div class="canvas-wrap">
+          <canvas id="sokoban-2" tabindex="0" width="600" height="300"></canvas>
+          <button class="canvas-reset-btn" data-sokoban="2" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+          <button class="canvas-create-env" id="sokoban-2-create">Create New Env</button>
+        </div>
+        <div class="flap-tabs">
+          <button class="flap-tab flap-tab-desc" data-flap="sokoban-2-desc">Game Rules</button>
+          <button class="flap-tab flap-tab-level active" data-flap="sokoban-2-level">Map Layout</button>
+        </div>
+        <div class="flap-panel flap-panel-desc" id="sokoban-2-desc">
+          <textarea spellcheck="false" id="sokoban-2-desc-text"></textarea>
+        </div>
+        <div class="flap-panel flap-panel-level open" id="sokoban-2-level">
+          <textarea spellcheck="false" id="sokoban-2-level-text"></textarea>
+        </div>
+      </div>
+      <div class="game-cell">
+        <div class="game-cell-title">Sokoban (two agents)</div>
+        <div class="canvas-wrap">
+          <canvas id="sokoban-3" tabindex="0" width="600" height="300"></canvas>
+          <button class="canvas-reset-btn" data-sokoban="3" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+          <button class="canvas-create-env" id="sokoban-3-create">Create New Env</button>
+        </div>
+        <div class="flap-tabs">
+          <button class="flap-tab flap-tab-desc" data-flap="sokoban-3-desc">Game Rules</button>
+          <button class="flap-tab flap-tab-level active" data-flap="sokoban-3-level">Map Layout</button>
+        </div>
+        <div class="flap-panel flap-panel-desc" id="sokoban-3-desc">
+          <textarea spellcheck="false" id="sokoban-3-desc-text"></textarea>
+        </div>
+        <div class="flap-panel flap-panel-level open" id="sokoban-3-level">
+          <textarea spellcheck="false" id="sokoban-3-level-text"></textarea>
+        </div>
+      </div>
+    </div>
+
+
+    <p>
+      For example, the setting on the right may reveal already an interesting bias in human players:
+      by being able to control two avatars simultaneously the optimal policy changes but it requires
+      a higher cognitive effort, because they cannot just identify themselves with a single entity in
+      the game anymore. Based on my experience, I defected very quickly, and just started focusing on
+      manipulating a single avatar and just ignoring the other avatar until something unwanted happens.
+      In this specific instance, there is an opportunity for the player to just force the two avatars
+      to overlap on the same grid cell, and afterwards they become inseparable. Once this happens,
+      you can recover the <i>single-agent</i> scenario and just live a happy life.
+    </p>
+
+  </section>
+
+
+    <section id="asymmetry">
+      <h3>2.4 The Asymmetry between Discovery and Execution</h3>
+      <p>
+        Similar to the famous <a href="https://arcprize.org/arc-agi">ARC-AGI challenges</a><a class="cite" href="#ref-11">[11]</a>,
+        VGDL games have a particularly clear boundary between the learning phase and the execution phase.
+        While for some games the rules are very simple and the main challenge is perfecting execution on those rules,
+        -- e.g. Chess, Go or Poker --
+        in VGDL it is obvious how much quicker one can execute once the latent rules have been discovered or revealed.
+        In the illustration below, we will have two stages:
+      </p>
+
+      <h4>Stage 1</h4>
+      <p>First, please try to solve the first game yourself and see how much time it takes.</p>
+
+      <div class="game-single">
+        <div class="canvas-wrap">
+          <canvas id="game-stage1" tabindex="0" width="630" height="360"></canvas>
+          <button class="canvas-reset-btn" data-stage="1" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+        <div class="game-help">Use arrow keys to move. Try to figure out the rules!</div>
+      </div>
+
+      <h4>Stage 2</h4>
+      <p>
+        In this stage, you will be presented with the rules first and you will be tasked to execute on these rules.
+        Now, since we cannot reset your brain to have a clear control for your learning speed,
+        I picked a different game -- one that, on average, takes the same time for participants to learn as the first one.
+      </p>
+
+      <div class="rules-callout">
+        <h4>Rules for the next game</h4>
+        <ul>
+          <li>You are the <strong>dark blue</strong> square. Use arrow keys to move, <strong>Space</strong> to swing your sword (a white flash).</li>
+          <li>The <strong>orange</strong> diamond is a key -- walk over it to collect it (+5 score).</li>
+          <li>The <strong>green</strong> square is the goal -- walk over it <em>after</em> collecting the key to win.</li>
+        </ul>
+      </div>
+
+      <div class="game-single">
+        <div class="canvas-wrap">
+          <canvas id="game-stage2" tabindex="0" width="630" height="360"></canvas>
+          <button class="canvas-reset-btn" data-stage="2" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+        </div>
+        <div class="game-help">Now try this game with the rules above!</div>
+      </div>
+    </section>
+
+    <!-- 3.2 Asymmetry as motivating force -->
+    <section id="asymmetry-motivating">
+      <h3>2.5 This Asymmetry as Motivating Force for the Evolution of Teaching</h3>
+      <p>
+        We always knew that discovery (e.g. research) is more time consuming and comes with a much higher risk than execution.
+        This explains why most of the repetitive jobs requiring little to no creativity are in great danger of automation:
+        the cost of discovering the rules has already been paid upfront.
+        That's why half of the AI industry is focusing on aggressively scaling to capitalise on past discoveries.
+      </p>
+      <p>
+        The other half, the one that's focusing on the <em>next</em> big thing, is automating the discovery process.
+        This is very likely to pay off because we, humans, might not make use of the ever growing knowledge base;
+        might not articulate the most revealing hypotheses, and we tend to be rather slow at experimentation compared to
+        the army of automated discovery agents.
+      </p>
+      <p>
+        However, I am fully convinced that there is a very crucial problem being overlooked in the mainstream research:
+        <strong>teaching</strong>.
+      </p>
+      <p>
+        Teaching, or more broadly speaking, transferring knowledge about the discoveries made in one's "lifetime"
+        is treated as a trivial problem and is mostly ignored by both frontier labs and emerging Science automation labs.
+      </p>
+      <p>
+        The very fact that our own manifestations of intelligent systems can simply save their weights, their activations
+        and simply duplicate themselves bit-by-bit, is a testament to the extent to which the ML community has ignored the
+        problem of teaching.
+      </p>
+      <p>
+        If teaching were just as easy, in the Stage 2 problem, you could've downloaded my brain's state after learning the rules
+        and uploaded it on your brain.
+        But we are biologically constrained, and for better or worse we need to expend some
+        non-trivial amount of cognitive cycles to share our findings.
+        In his essay, Geoffrey Hinton<a class="cite" href="#ref-12">[12]</a> points at this very detail, as the biggest contrast between our intelligence and
+        artificial intelligence.
+      </p>
+      <p>
+        While the necessity of teaching can be thought of as a burden,
+        I would also like to point out how lucky we are that some of us still evolved to be able to teach!
+        Without doubt, geniuses -- incredible lifetime discoverers -- have always propelled the advancement of humankind,
+        however, knowledge rarely diffused organically to the rest of us.
+        Someone always quietly helped us climb up to the proverbial shoulder of giants: our mentors, supervisors, teachers.
+      </p>
+    </section>
+
+    <!-- 3.3 Naive Approach -->
+    <section id="naive-approach">
+      <h3>2.6 A Naive Approach to Teaching</h3>
+      <p>
+        There is a very legitimate question: "why the faff, can't we just ask ChatGPT to teach us about whatever?" and of course the answer is yes, we can.
+        In fact, in some cases we already see a benefit of having access to conversational knowledge bases.
+        I'm thinking about some niche Wikipedia pages, e.g.
+        <a href="https://en.wikipedia.org/wiki/Pseudo-Riemannian_manifold">Pseudo-Riemannian manifold</a>
+        that is written <em>by</em> math bros, <em>for</em> math bros -- the bar for creating even just a slightly more accessible teaching material is not super high.
+      </p>
+      <p>
+        This is possible because, as a byproduct of massive-scale imitation learning,
+        frontier models already have surface level capabilities of teaching in various domains.
+        Models like DeepSeek or Claude and Gemini can not only <em>solve</em> VGDL puzzles used in fMRI studies,
+        as we demonstrate <a href="https://openreview.net/forum?id=ieIAWEpAFA">here</a><a class="cite" href="#ref-16">[16]</a>,
+        but they can already be used as companions for our discovery.
+        Find below a proof of concept, where you can not only build and play any arbitrary games,
+        but have a narrator alongside you, that will try to figure out your intentions and
+        learning progress in the game so far:
+      </p>
+
+      <!-- Live Narrator Demo (Oracle Mode) -->
+      <div class="narration-demo">
+        <div>
+          <div class="canvas-wrap">
+            <canvas id="narration-canvas" tabindex="0" width="630" height="360"></canvas>
+            <button class="canvas-reset-btn" id="narrator-reset-btn" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg></button>
+          </div>
+          <div class="flap-tabs">
+            <button class="flap-tab flap-tab-desc" data-flap="narrator-desc">Game Description</button>
+            <button class="flap-tab flap-tab-level" data-flap="narrator-level">Map Layout</button>
+          </div>
+          <div class="flap-panel flap-panel-desc" id="narrator-desc">
+            <textarea spellcheck="false" id="narrator-desc-text"></textarea>
+          </div>
+          <div class="flap-panel flap-panel-level" id="narrator-level">
+            <textarea spellcheck="false" id="narrator-level-text"></textarea>
+          </div>
+        </div>
+        <div class="narrator-right">
+          <details>
+            <summary>API Settings</summary>
+            <label>OpenRouter API Key
+              <input type="password" id="narrator-api-key" placeholder="sk-or-...">
+            </label>
+            <label>Model
+              <input type="text" id="narrator-model" value="deepseek/deepseek-v3.2">
+            </label>
+          </details>
+          <button id="narrator-ask-btn">Ask Narrator</button>
+          <div class="narrator-response" id="narrator-response">
+            <span style="color:#888; font-style:italic;">Play a few moves, then click "Ask Narrator" for oracle commentary.</span>
+          </div>
+        </div>
+        <div class="narration-caption">
+          Live LLM narrator -- the model does NOT see the game rules and must infer them from the player's actions.
+        </div>
+      </div>
+
+      <p>
+        While the models can easily solve the immediate problem of a learner by hurling the right solutions at them,
+        or at least the best next things to try, they don't necessarily help improve the learning capabilities of students.
+        If there are no mistakes made, there will be no chances to learn to infer the right rules from the observations,
+        no need for memorization, recombination and in general no first-hand experience of discovery.
+      </p>
+      <p>
+        The art of teaching lies in giving the <em>smallest</em> nudge in the <em>right</em> direction
+        to get the student over the hypothesized mental barrier.
+      </p>
+      <p>
+        Finding this mythical just-the-right-nudge is, however, the greatest challenge of the theory of mind:
+        you not only need to be able to solve the task at hand, you need to model the thought process, the dead ends, the <em>aha!</em> moments,
+        the silent bits of the learner.
+        To make things even more complicated, your student is a dynamically evolving system, with improving meta-learning capabilities and drifting interests.
+        Well... that's why we are just in the right time and right place to start modeling one of the most intriguing social interactions: teaching.
+      </p>
+    </section>
+  </section>
+
+  <!-- Section 4: Summary -->
+  <section id="summary">
+    <h2>3. Summary of Current and Future Work</h2>
+    <p>
+      In this blog post I hoped to have outlined a computationally feasible way towards building agents that are explicitly optimized
+      to be good teachers.
+      Currently I am working with an amazing team of collaborators at Oxford, NYU, MIT and Harvard around
+      the clock to lay down the foundations and publish the baselines for each of the engineering challenges of teaching:
+    </p>
+    <ul class="summary-list">
+      <li>
+        <strong>Estimate Pre-existing Knowledge</strong>: in our recent project Reason to Play<a class="cite" href="#ref-24">[24]</a>, we propose a new method to assess and recover the current progress of learning of human participants, purely based on behavioural responses in unseen environments. A surprising outcome of the study is that frontier models show strong neural alignment without any finetuning alongside the behavioural alignment.
+      </li>
+      <li>
+        <strong>Modeling the Learner's Dynamics</strong> (in progress): to facilitate robust modeling of the student's adaptation mechanism, we automate the search over the latent game space by simulating the distribution of responses to a certain set of rules and map layouts. We show that by altering the environment we can increase or decrease the variance of individual responses, shorten or lengthen the learning curve and most importantly: we shape the emergent clusters of behaviours and neural representations at the participant level.
+      </li>
+      <li>
+        <strong>Detecting the Goldilocks' Zone</strong> (in progress): we propose a multi-agent, iterative adversarial optimization technique that estimates the toughest challenge the subject student is still likely to be able to pass that can dynamically adapt to the evolving skillset and meta-learning capabilities of the student.
+        While this is primarily a scientific endeavor, the turn-based adversarial nature of the method lends itself to an interesting meta-boardgame that we ended up having some fun playing among ourselves.
+      </li>
+    </ul>
+    <p>
+      If you are keen to debate the high level concepts, provide suggestions on the technical implementations or collaborate with us on these projects, please leave a comment or reach out in DM.
+    </p>
+  </section>
+
+  <!-- Section 4: Acknowledgement -->
+  <section id="acknowledgement">
+    <h2>Acknowledgement</h2>
+    <p>
+      It is a true privilege to have been part of the first cohort of the Encode Fellowship, thanks to them I have met brilliant peers who have been and continue to be instrumental to this
+      line of research.
+      Special thanks to Josh Tenenbaum, Kevin Murphy, Hasan Hammoud, Chris Summerfield, Alister Burt, Fabio Pizzati, Benedek Tasi, Iliya Golovanov, Bes Shyti, Leah Morris, Leone Baron, Tony Kulesa, Mike Webb, Will Bolton, Brian Ezinwoke, Shubham Deshpande, Sreejan Kumar, Momchil Tomov, Marcelo Mattar, Rui Ponte Costa, Tsvetomira Dumbalska, Vincent Adam and many many more for their invaluable feedback on the essay.
+    </p>
+  </section>
+
+  <hr>
+  <!-- References -->
+  <footer id="references" class="references">
+    <h2>References</h2>
+    <ol class="ref-list">
+      <li id="ref-1">
+        Schaul, T. (2013). <em>A Video Game Description Language for Model-Based or Interactive Learning.</em>
+        IEEE Conference on Computational Intelligence in Games (CIG).
+      </li>
+      <li id="ref-2">
+        Ebner, M., Levine, J., Lucas, S.M., Schaul, T., Thompson, T., Togelius, J. (2013).
+        <em>Towards a Video Game Description Language.</em>
+        Dagstuhl Seminar on Artificial and Computational Intelligence in Games.
+      </li>
+      <li id="ref-3">
+        Tsividis, P.A., Pouncy, T., Xu, J.L., Tenenbaum, J.B., Gershman, S.J. (2017).
+        <em>Human Learning in Atari.</em>
+        AAAI Spring Symposium on Science of Intelligence.
+      </li>
+      <li id="ref-4">
+        Colas, C., Sigaud, O., Oudeyer, P.-Y. (2022).
+        <em>Learning to solve complex tasks by growing knowledge culturally across generations.</em>
+        Nature Machine Intelligence.
+      </li>
+      <li id="ref-5">
+        Tomov, M.S., Yagati, S., Kumar, A., Yang, W., Gershman, S.J. (2020).
+        <em>What is the Model in Model-Based Planning?</em>
+        Cognitive Science.
+      </li>
+      <li id="ref-6">
+        Tsividis, P.A., Loula, J., Burga, J., Foss, N., Campero, A., Pouncy, T., Gershman, S.J., Tenenbaum, J.B. (2021).
+        <em>The Neural Architecture of Theory-based Reinforcement Learning.</em>
+        NeurIPS.
+      </li>
+      <li id="ref-7">
+        Tsividis, P.A., Pouncy, T., Xu, J.L., Tenenbaum, J.B., Gershman, S.J. (2021).
+        <em>Human-Level Reinforcement Learning through Theory-Based Modeling, Exploration, and Planning.</em>
+        Nature Human Behaviour.
+      </li>
+      <li id="ref-8">
+        Bruce, J., Dennis, M., Edwards, A., Parker-Holder, J., Shi, Y., Hughes, E., et al. (2024).
+        <em>Genie: Generative Interactive Environments.</em>
+        DeepMind.
+      </li>
+      <li id="ref-9">
+        SIMA Team, Abramson, J., Ahuja, A., Barber, F., Bauer, L., et al. (2024).
+        <em>Scaling Instructable Agents Across Many Simulated Worlds.</em>
+        DeepMind.
+      </li>
+      <li id="ref-10">
+        Dieleman, S. (2025).
+        <em>Steering with latents.</em>
+        <a href="https://sander.ai/2025/04/15/latents.html">sander.ai/2025/04/15/latents.html</a>
+      </li>
+      <li id="ref-11">
+        Chollet, F. (2019).
+        <em>On the Measure of Intelligence.</em>
+        <a href="https://arcprize.org/arc-agi">ARC-AGI / ARC Prize</a>.
+      </li>
+      <li id="ref-12">
+        Hinton, G.E. (2022).
+        <em>The Forward-Forward Algorithm: Some Preliminary Investigations.</em>
+        (Essay on biological vs artificial intelligence.)
+      </li>
+      <li id="ref-13">
+        Valve Corporation (2007). <em>Portal.</em> Video game.
+      </li>
+      <li id="ref-14">
+        Parker Brothers (1984). <em>Montezuma's Revenge.</em> Video game.
+      </li>
+      <li id="ref-15">
+        Scalzi, J. (2010).
+        <em>When the Yogurt Took Over.</em>
+        (adapted in <a href="https://www.imdb.com/title/tt9788494/">Love, Death &amp; Robots</a>, 2019)
+      </li>
+      <li id="ref-16">
+        Botos, C., et al. (2025).
+        <em>LLMs Playing VGDL Games.</em>
+        <a href="https://openreview.net/forum?id=ieIAWEpAFA">OpenReview</a>.
+      </li>
+      <li id="ref-17">
+        Wai-Chung Kwan, Joshua Ong Jun Leang, Pavlos Vougiouklis, Jeff Z. Pan, Marco Valentino, Pasquale Minervini.
+        <em>OpenSIR: Open-Ended Self-Improving Reasoner.</em>
+        <a href="https://arxiv.org/abs/2511.00602">arXiv</a>.
+      </li>
+      <li id="ref-18">
+        Xinming Yang, Haasil Pujara, Jun Li.
+        <em>Learning by Teaching: Engaging Students as Instructors of Large Language Models in Computer Science Education.</em>
+        <a href="https://arxiv.org/abs/2508.05979">arXiv</a>.
+      </li>
+      <li id="ref-19">
+        Xuefei Ning, Zifu Wang, Shiyao Li, Zinan Lin, Peiran Yao, Tianyu Fu, Matthew B. Blaschko, Guohao Dai, Huazhong Yang, Yu Wang.
+        <em>Can LLMs Learn by Teaching for Better Reasoning? A Preliminary Study.</em>
+        <a href="https://arxiv.org/abs/2406.14629">arXiv</a>.
+      </li>
+      <li id="ref-20">
+        Marr, D. (1982).
+        <em>Vision: A Computational Investigation into the Human Representation and Processing of Visual Information.</em>
+        MIT Press.
+      </li>
+      <li id="ref-21">
+        Knill, D.C., Pouget, A. (2004).
+        <em>The Bayesian Brain: The Role of Uncertainty in Neural Coding and Computation.</em>
+        Trends in Neurosciences, 27(12), 712-719.
+      </li>
+      <li id="ref-22">
+        Tenenbaum, J.B., Kemp, C., Griffiths, T.L., Goodman, N.D. (2011).
+        <em>How to Grow a Mind: Statistics, Structure, and Abstraction.</em>
+        Science, 331(6022), 1279-1285.
+      </li>
+      <li id="ref-23">
+        Friston, K. (2010).
+        <em>The free-energy principle: a unified brain theory?</em>
+        Nature Reviews Neuroscience, 11(2), 127-138.
+      </li>
+      <li id="ref-24">
+        Botos, C.*, Kumar, S.*, Andrews, A.T.D., Hunt, L., Summerfield, C., Tenenbaum, J.B., Ponte Costa, R., Mattar, M.G., Tomov, M.S. (2026).
+        <em>Reason to Play: Behavioral and Brain Alignment Between Frontier LRMs and Human Game Learners.</em>
+        ICLR Alignment Workshop (Oral); CCN (Oral).
+        <a href="https://arxiv.org/abs/2605.08019">arXiv</a> /
+        <a href="https://botcs.github.io/reason-to-play/">project page</a>
+      </li>
+    </ol>
+  </footer>
+
+  <!-- Comments -->
+  <section id="comments">
+    <h2>Comments</h2>
+    <script src="https://giscus.app/client.js"
+            data-repo="botcs/academic"
+            data-repo-id="R_kgDOK42dZA"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOK42dZM4DDZhc"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </section>
+
+</article>
+
+<!-- ===== JavaScript: Game Engine + Interactive Elements ===== -->
+<script type="module">
+  import { setupRegistry } from './engine/setup-registry.js';
+  import { VGDLParser } from './engine/parser.js';
+  import { ACTION } from './engine/action.js';
+  import { Renderer } from './renderer.js';
+  import { GAMES } from './games/game-data.js';
+  import { ObjectIDMapper, buildSpriteSnapshot, formatState, logAction, buildPrompt, callNarrator } from './narrator.js';
+
+  setupRegistry();
+
+  // === Key mapping ===
+  function keyMap(key) {
+    switch (key) {
+      case 'ArrowUp': case 'w': return 'UP';
+      case 'ArrowDown': case 's': return 'DOWN';
+      case 'ArrowLeft': case 'a': return 'LEFT';
+      case 'ArrowRight': case 'd': return 'RIGHT';
+      case ' ': return 'SPACE';
+      default: return null;
+    }
+  }
+
+  function actionFromKey(key) {
+    switch (key) {
+      case 'UP': return ACTION.UP;
+      case 'DOWN': return ACTION.DOWN;
+      case 'LEFT': return ACTION.LEFT;
+      case 'RIGHT': return ACTION.RIGHT;
+      case 'SPACE': return ACTION.SPACE;
+      default: return ACTION.NOOP;
+    }
+  }
+
+  // === GameInstance: one independent playable game ===
+  class GameInstance {
+    constructor(canvasId, gameName, levelNum, cellSize) {
+      this.canvas = document.getElementById(canvasId);
+      this.renderer = new Renderer(this.canvas, cellSize);
+      this.gameName = gameName;
+      this.levelNum = levelNum;
+      this.level = null;
+      this.lastKeyPressed = null;
+      this._bindEvents();
+      this.load();
+    }
+
+    load() {
+      const data = GAMES[this.gameName];
+      const parser = new VGDLParser();
+      this.game = parser.parseGame(data.description);
+      this.level = this.game.buildLevel(data.levels[this.levelNum]);
+      this.renderer.resize(this.level.width, this.level.height);
+      this.renderer.render(this.level);
+    }
+
+    reset() {
+      this.level.reset();
+      this.renderer.render(this.level);
+    }
+
+    loadFromText(description, levelText) {
+      const parser = new VGDLParser();
+      this.game = parser.parseGame(description);
+      this.level = this.game.buildLevel(levelText);
+      this.renderer.resize(this.level.width, this.level.height);
+      this.renderer.render(this.level);
+    }
+
+    _bindEvents() {
+      this.canvas.addEventListener('keydown', (e) => {
+        const k = keyMap(e.key);
+        if (k) {
+          e.preventDefault();
+          this.lastKeyPressed = k;
+          this._doTick();
+        }
+      });
+      this.canvas.addEventListener('blur', () => {
+        this.lastKeyPressed = null;
+      });
+    }
+
+    _doTick() {
+      if (!this.level || this.level.ended) return;
+      const action = actionFromKey(this.lastKeyPressed);
+      this.lastKeyPressed = null;
+      this.level.tick(action);
+      this.renderer.render(this.level);
+    }
+  }
+
+  // === Create all game instances ===
+
+  // 6 grid games (cellSize=20)
+  const GRID_GAMES = [
+    { name: 'avoidGeorge_vgfmri4', level: 3 },
+    { name: 'bait_vgfmri4', level: 3 },
+    { name: 'chase_vgfmri4', level: 3 },
+    { name: 'helper_vgfmri4', level: 3 },
+    { name: 'lemmings_vgfmri4', level: 3 },
+    { name: 'zelda_vgfmri4', level: 3 },
+  ];
+
+  const gridInstances = GRID_GAMES.map((g, i) =>
+    new GameInstance(`grid-${i}`, g.name, g.level, 20)
+  );
+
+  // Sokoban 2x1 comparison
+  const sokobanHard = new GameInstance('sokoban-0', 'sokoban_vgfmri3', 2, 20);
+  const sokobanEasy = new GameInstance('sokoban-1', 'sokoban_vgfmri3', '2_easy', 20);
+  const sokobanSingle = new GameInstance('sokoban-2', 'sokoban_vgfmri3', 2, 20);
+  const sokobanDual = new GameInstance('sokoban-3', 'sokoban_vgfmri3', '2_dual', 20);
+  const sokobanInstances = [sokobanHard, sokobanEasy, sokobanSingle, sokobanDual];
+
+  // Populate sokoban flap textareas and bind edits to show "Create New Env"
+  const sokobanData = GAMES['sokoban_vgfmri3'];
+  const sokobanEditors = [
+    { desc: document.getElementById('sokoban-0-desc-text'), level: document.getElementById('sokoban-0-level-text'), btn: document.getElementById('sokoban-0-create'), instance: sokobanHard, origDesc: sokobanData.description.trim(), origLevel: sokobanData.levels[2].trim() },
+    { desc: document.getElementById('sokoban-1-desc-text'), level: document.getElementById('sokoban-1-level-text'), btn: document.getElementById('sokoban-1-create'), instance: sokobanEasy, origDesc: sokobanData.description.trim(), origLevel: sokobanData.levels['2_easy'].trim() },
+    { desc: document.getElementById('sokoban-2-desc-text'), level: document.getElementById('sokoban-2-level-text'), btn: document.getElementById('sokoban-2-create'), instance: sokobanSingle, origDesc: sokobanData.description.trim(), origLevel: sokobanData.levels[2].trim() },
+    { desc: document.getElementById('sokoban-3-desc-text'), level: document.getElementById('sokoban-3-level-text'), btn: document.getElementById('sokoban-3-create'), instance: sokobanDual, origDesc: sokobanData.description.trim(), origLevel: sokobanData.levels['2_dual'].trim() },
+  ];
+  for (const s of sokobanEditors) {
+    s.desc.value = s.origDesc;
+    s.level.value = s.origLevel;
+    const showBtn = () => s.btn.classList.add('visible');
+    s.desc.addEventListener('input', showBtn);
+    s.level.addEventListener('input', showBtn);
+    s.btn.addEventListener('click', () => {
+      s.instance.loadFromText(s.desc.value, s.level.value);
+      s.btn.classList.remove('visible');
+    });
+  }
+
+  // Flap tab toggling
+  document.querySelectorAll('.flap-tab[data-flap]').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const panelId = tab.dataset.flap;
+      const panel = document.getElementById(panelId);
+      const siblingTabs = tab.parentElement.querySelectorAll('.flap-tab');
+      const siblingPanels = tab.parentElement.parentElement.querySelectorAll('.flap-panel');
+      if (tab.classList.contains('active')) {
+        tab.classList.remove('active');
+        panel.classList.remove('open');
+      } else {
+        siblingTabs.forEach(t => t.classList.remove('active'));
+        siblingPanels.forEach(p => p.classList.remove('open'));
+        tab.classList.add('active');
+        panel.classList.add('open');
+      }
+    });
+  });
+
+  // Stage 1: bait (cellSize=30)
+  const stage1 = new GameInstance('game-stage1', 'bait_vgfmri4', 3, 30);
+
+  // Stage 2: zelda (cellSize=30)
+  const stage2 = new GameInstance('game-stage2', 'zelda_vgfmri4', 3, 30);
+
+  // === NarratorInstance: GameInstance + action tracking + LLM narrator ===
+  const ACTION_NAMES = ['UP', 'DOWN', 'LEFT', 'RIGHT', 'NOOP', 'SPACE'];
+
+  class NarratorInstance extends GameInstance {
+    constructor(canvasId, gameName, levelNum, cellSize) {
+      super(canvasId, gameName, levelNum, cellSize);
+      this.idMapper = new ObjectIDMapper();
+      this.actionHistory = [];
+      this.stepCounter = 0;
+      this.prevSnapshot = null;
+      this.lastActionIdx = 4; // NOOP
+      this._initTracking();
+    }
+
+    _initTracking() {
+      this.actionHistory = [];
+      this.stepCounter = 0;
+      this.lastActionIdx = 4;
+      this.idMapper.reset();
+      if (this.level) {
+        this.prevSnapshot = buildSpriteSnapshot(this.level);
+        for (const obj of Object.values(this.prevSnapshot)) {
+          if (!obj.isAvatar && obj.key !== 'wall' && obj.key !== 'floor' && obj.key !== 'background')
+            this.idMapper.getAbstractId(obj.id);
+        }
+      }
+    }
+
+    reset() {
+      super.reset();
+      this._initTracking();
+    }
+
+    _doTick() {
+      if (!this.level || this.level.ended) return;
+      this.prevSnapshot = buildSpriteSnapshot(this.level);
+      const action = actionFromKey(this.lastKeyPressed);
+      this.lastKeyPressed = null;
+      const actionIdx = action === ACTION.UP ? 0 : action === ACTION.DOWN ? 1
+        : action === ACTION.LEFT ? 2 : action === ACTION.RIGHT ? 3
+        : action === ACTION.SPACE ? 5 : 4;
+      this.level.tick(action);
+      const currSnapshot = buildSpriteSnapshot(this.level);
+      this.stepCounter++;
+      const logStr = logAction(
+        this.stepCounter, actionIdx, this.prevSnapshot, currSnapshot,
+        this.level.events_triggered, this.level, this.idMapper
+      );
+      this.actionHistory.push(logStr);
+      this.lastActionIdx = actionIdx;
+      this.prevSnapshot = currSnapshot;
+      this.renderer.render(this.level);
+    }
+
+    async askNarrator(apiKey, model) {
+      const stateText = formatState(this.level, this.idMapper);
+      const actionName = ACTION_NAMES[this.lastActionIdx] || 'NOOP';
+      const gameDesc = GAMES[this.gameName].description;
+      const { systemPrompt, userMessage } = buildPrompt(
+        'narrator', this.actionHistory, stateText, actionName, gameDesc, 50
+      );
+      return await callNarrator(apiKey, model, systemPrompt, userMessage);
+    }
+  }
+
+  // Create narrator instance
+  const narratorResponseEl = document.getElementById('narrator-response');
+  const narrationInstance = new NarratorInstance('narration-canvas', 'zelda_vgfmri4', 3, 30);
+
+  // Populate flap textareas
+  const narratorDescText = document.getElementById('narrator-desc-text');
+  const narratorLevelText = document.getElementById('narrator-level-text');
+  const nData = GAMES['zelda_vgfmri4'];
+  narratorDescText.value = nData.description;
+  narratorLevelText.value = nData.levels[3];
+
+  // Reset button
+  document.getElementById('narrator-reset-btn').addEventListener('click', () => {
+    narrationInstance.reset();
+    document.getElementById('narration-canvas').focus();
+  });
+
+  // API key persistence
+  const apiKeyInput = document.getElementById('narrator-api-key');
+  const modelInput = document.getElementById('narrator-model');
+  apiKeyInput.value = localStorage.getItem('narrator-api-key') || '';
+  modelInput.value = localStorage.getItem('narrator-model') || 'deepseek/deepseek-v3.2';
+  apiKeyInput.addEventListener('change', () => localStorage.setItem('narrator-api-key', apiKeyInput.value));
+  modelInput.addEventListener('change', () => localStorage.setItem('narrator-model', modelInput.value));
+
+  // Ask Narrator button
+  const askBtn = document.getElementById('narrator-ask-btn');
+  askBtn.addEventListener('click', async () => {
+    const apiKey = apiKeyInput.value.trim();
+    if (!apiKey) { narratorResponseEl.textContent = 'Please enter an API key.'; return; }
+    askBtn.disabled = true;
+    askBtn.textContent = 'Thinking...';
+    narratorResponseEl.innerHTML = '<span style="color:#888; font-style:italic;">Waiting for response...</span>';
+    const model = modelInput.value.trim() || 'deepseek/deepseek-v3.2';
+    try {
+      const raw = await narrationInstance.askNarrator(apiKey, model);
+      // Parse JSON response
+      let parsed;
+      try {
+        const jsonMatch = raw.match(/```json\s*([\s\S]*?)```/) || raw.match(/\{[\s\S]*\}/);
+        const jsonStr = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : raw;
+        parsed = JSON.parse(jsonStr);
+      } catch { parsed = null; }
+      if (parsed) {
+        let html = '';
+        if (parsed.latest_move) {
+          html += `<div class="nr-suggestion">${parsed.latest_move}</div>`;
+        }
+        if (parsed.current_quest) {
+          html += `<div class="nr-label">Current Quest</div><div>${parsed.current_quest}</div>`;
+        }
+        if (parsed.key_discoveries) {
+          html += `<div class="nr-label">Key Discoveries</div><div>${parsed.key_discoveries}</div>`;
+        }
+        if (parsed.reasoning) {
+          html += `<div class="nr-label">Reasoning</div><div style="font-size:13px;color:#555;">${parsed.reasoning}</div>`;
+        }
+        narratorResponseEl.innerHTML = html || raw;
+      } else {
+        narratorResponseEl.textContent = raw;
+      }
+    } catch (err) {
+      narratorResponseEl.textContent = 'Error: ' + err.message;
+    }
+    askBtn.disabled = false;
+    askBtn.textContent = 'Ask Narrator';
+  });
+
+  // === Reset buttons (overlay on canvas) ===
+  document.querySelectorAll('.canvas-reset-btn[data-grid]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.grid);
+      gridInstances[idx].reset();
+      btn.parentElement.querySelector('canvas').focus();
+    });
+  });
+  document.querySelectorAll('.canvas-reset-btn[data-sokoban]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.sokoban);
+      sokobanInstances[idx].reset();
+      btn.parentElement.querySelector('canvas').focus();
+    });
+  });
+  document.querySelectorAll('.canvas-reset-btn[data-stage]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const s = btn.dataset.stage;
+      if (s === '1') stage1.reset();
+      else if (s === '2') stage2.reset();
+      btn.parentElement.querySelector('canvas').focus();
+    });
+  });
+
+  // === TOC Active Section Tracking ===
+  const tocLinks = document.querySelectorAll('.toc a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    }
+  }, { rootMargin: '-15% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // === Mobile D-Pad ===
+  const dpad = document.getElementById('mobile-dpad');
+  let activeDpadInstance = null;
+
+  // Map canvas id -> GameInstance
+  const canvasInstanceMap = {};
+  gridInstances.forEach((inst, i) => { canvasInstanceMap[`grid-${i}`] = inst; });
+  canvasInstanceMap['sokoban-0'] = sokobanHard;
+  canvasInstanceMap['sokoban-1'] = sokobanEasy;
+  canvasInstanceMap['sokoban-2'] = sokobanSingle;
+  canvasInstanceMap['sokoban-3'] = sokobanDual;
+  canvasInstanceMap['game-stage1'] = stage1;
+  canvasInstanceMap['game-stage2'] = stage2;
+  canvasInstanceMap['narration-canvas'] = narrationInstance;
+
+  // Show D-Pad when any game canvas is focused
+  document.querySelectorAll('canvas[tabindex]').forEach(canvas => {
+    canvas.addEventListener('focus', () => {
+      const inst = canvasInstanceMap[canvas.id];
+      if (inst) {
+        activeDpadInstance = inst;
+        dpad.classList.add('visible');
+      }
+    });
+  });
+
+  // Hide on scroll
+  window.addEventListener('scroll', () => {
+    dpad.classList.remove('visible');
+    activeDpadInstance = null;
+  }, { passive: true });
+
+  // Adjust D-Pad position for dynamic browser chrome (Chrome toolbar, etc.)
+  if (window.visualViewport) {
+    function repositionDpad() {
+      if (!dpad.classList.contains('visible')) return;
+      var vv = window.visualViewport;
+      var bottomInset = window.innerHeight - (vv.offsetTop + vv.height);
+      dpad.style.setProperty('--dpad-toolbar-offset', Math.max(0, bottomInset) + 'px');
+    }
+    window.visualViewport.addEventListener('resize', repositionDpad);
+    window.visualViewport.addEventListener('scroll', repositionDpad);
+  }
+
+  // Hide on click outside game area and dpad
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.canvas-wrap') || e.target.closest('.narration-demo') || e.target.closest('#mobile-dpad')) return;
+    dpad.classList.remove('visible');
+    activeDpadInstance = null;
+  });
+
+  // D-Pad action dispatcher
+  function dpadAction(actionName) {
+    if (!activeDpadInstance) return;
+    activeDpadInstance.lastKeyPressed = actionName;
+    activeDpadInstance._doTick();
+    activeDpadInstance.canvas.focus();
+  }
+
+  // Zone-based touch detection: divide D-Pad into 3x3 grid,
+  // cross cells map directly, corner cells resolve by dominant axis
+  function zoneFromTouch(touch) {
+    var rect = dpad.getBoundingClientRect();
+    var x = touch.clientX - rect.left;
+    var y = touch.clientY - rect.top;
+    var w = rect.width;
+    var h = rect.height;
+    var col = Math.min(2, Math.max(0, Math.floor(x / w * 3)));
+    var row = Math.min(2, Math.max(0, Math.floor(y / h * 3)));
+
+    if (col === 1 && row === 0) return 'UP';
+    if (col === 1 && row === 2) return 'DOWN';
+    if (col === 0 && row === 1) return 'LEFT';
+    if (col === 2 && row === 1) return 'RIGHT';
+    if (col === 1 && row === 1) return 'SPACE';
+
+    // Corner cells: pick direction by which axis is further from center
+    var cx = x - w / 2;
+    var cy = y - h / 2;
+    if (Math.abs(cx) >= Math.abs(cy)) {
+      return cx < 0 ? 'LEFT' : 'RIGHT';
+    } else {
+      return cy < 0 ? 'UP' : 'DOWN';
+    }
+  }
+
+  var actionToBtnClass = {
+    'UP': 'dpad-up', 'DOWN': 'dpad-down',
+    'LEFT': 'dpad-left', 'RIGHT': 'dpad-right',
+    'SPACE': 'dpad-space'
+  };
+
+  function showBtnFeedback(action) {
+    var cls = actionToBtnClass[action];
+    if (!cls) return;
+    var btn = dpad.querySelector('.' + cls);
+    if (btn) {
+      btn.classList.add('active');
+      setTimeout(function() { btn.classList.remove('active'); }, 120);
+    }
+  }
+
+  // Touch handler on the container
+  dpad.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    var action = zoneFromTouch(e.touches[0]);
+    if (action) {
+      dpadAction(action);
+      showBtnFeedback(action);
+    }
+  }, { passive: false });
+
+  // Desktop click fallback
+  dpad.addEventListener('click', function(e) {
+    var action = zoneFromTouch(e);
+    if (action) {
+      dpadAction(action);
+      showBtnFeedback(action);
+    }
+  });
+
+  // Prevent focus steal on desktop
+  dpad.addEventListener('mousedown', function(e) { e.preventDefault(); });
+</script>
+
+<script>
+// Citation hover tooltips: wrap each .cite link with a tooltip showing the reference text
+document.querySelectorAll('a.cite').forEach(function(cite) {
+  var refId = cite.getAttribute('href');
+  if (!refId) return;
+  var refEl = document.querySelector(refId);
+  if (!refEl) return;
+
+  var wrapper = document.createElement('span');
+  wrapper.className = 'cite-wrapper';
+  cite.parentNode.insertBefore(wrapper, cite);
+  wrapper.appendChild(cite);
+
+  var tooltip = document.createElement('span');
+  tooltip.className = 'cite-tooltip';
+  tooltip.textContent = refEl.textContent.trim();
+  wrapper.appendChild(tooltip);
+});
+</script>
+
+<div class="dpad" id="mobile-dpad">
+  <button class="dpad-btn dpad-up" data-action="UP" tabindex="-1">^</button>
+  <button class="dpad-btn dpad-left" data-action="LEFT" tabindex="-1">&lt;</button>
+  <button class="dpad-btn dpad-space" data-action="SPACE" tabindex="-1">act</button>
+  <button class="dpad-btn dpad-right" data-action="RIGHT" tabindex="-1">&gt;</button>
+  <button class="dpad-btn dpad-down" data-action="DOWN" tabindex="-1">v</button>
+</div>
+
+</body>
+</html>
