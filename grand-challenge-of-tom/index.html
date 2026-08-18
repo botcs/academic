@@ -231,6 +231,39 @@
     }
     .ref-list a { text-decoration: underline; text-underline-offset: 2px; }
 
+    /* === Citation box === */
+    .cite-box {
+      position: relative;
+      background: #f7f7f5;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 14px 18px;
+      margin: 16px 0 0;
+    }
+    .cite-box pre {
+      margin: 0;
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #333;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .cite-copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 13px;
+      padding: 2px 10px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #555;
+      cursor: pointer;
+    }
+    .cite-copy-btn:hover { background: #eee; color: #000; }
+
     /* === Figures === */
     figure {
       margin: 32px 0;
@@ -771,6 +804,7 @@
     <li><a href="#summary">3. Summary</a></li>
     <li><a href="#acknowledgement">Acknowledgement</a></li>
     <li><a href="#references">References</a></li>
+    <li><a href="#citation">Cite this essay</a></li>
   </ul>
 </nav>
 
@@ -1714,6 +1748,22 @@
     </ol>
   </footer>
 
+  <!-- Citation -->
+  <section id="citation">
+    <h2>Cite this essay</h2>
+    <div class="cite-box">
+      <button class="cite-copy-btn" id="cite-copy-btn">Copy</button>
+      <pre id="cite-bibtex">@misc{botos2026teaching,
+  author = {Botos, Csaba},
+  title  = {The Grand Challenge of Theory of Mind: Teaching},
+  year   = {2026},
+  month  = {August},
+  url    = {https://botcs.github.io/academic/grand-challenge-of-tom/},
+  note   = {Blog post. Circulated privately since March 2026.}
+}</pre>
+    </div>
+  </section>
+
   <!-- Comments -->
   <section id="comments">
     <h2>Comments</h2>
@@ -2192,6 +2242,17 @@
 
   // Prevent focus steal on desktop
   dpad.addEventListener('mousedown', function(e) { e.preventDefault(); });
+</script>
+
+<script>
+// Citation copy button
+document.getElementById('cite-copy-btn').addEventListener('click', function() {
+  var btn = this;
+  navigator.clipboard.writeText(document.getElementById('cite-bibtex').textContent).then(function() {
+    btn.textContent = 'Copied';
+    setTimeout(function() { btn.textContent = 'Copy'; }, 1500);
+  });
+});
 </script>
 
 <script>
